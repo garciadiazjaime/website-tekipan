@@ -7,6 +7,21 @@ var path = require('path');
 var favicon = require('static-favicon');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/tekipan');
+var ofertaSchema = mongoose.Schema({
+    title: String,
+    href: String,
+    timestamp: String,
+    description: String,
+    salary: String,
+    company: String,
+    tag: String,
+    source: String
+});
+
+var Oferta = mongoose.model('Oferta', ofertaSchema)
+
 
 /**
  *  Define the sample application.
@@ -105,9 +120,28 @@ var SampleApp = function() {
         };
 
         self.routes['/'] = function(req, res) {
-            //res.setHeader('Content-Type', 'text/html');
-            //res.send(self.cache_get('index.html') );
-            res.render('index', { title: 'Busca trabajo | Encuentra un nuevo empleo ' });
+            Oferta.find(function (err, ofertas) {
+                if (err) return console.error(err);
+                res.render('index', 
+                    { 
+                        title: 'Busca trabajo | Encuentra un nuevo empleo ',
+                        ofertas: ofertas
+                    }
+                );
+            });
+        };
+
+        self.routes['/ofertas/get'] = function(req, res) {
+            console.log('ofertas/get');
+            Oferta.find(function (err, ofertas) {
+                if (err) return console.error(err);
+                if(typeof ofertas && ofertas.length){
+                    res.json({ 'status': 1, 'data': ofertas })    
+                }
+                else{
+                    res.json({ 'status': 0 })       
+                }
+            });
         };
 
     };
@@ -124,6 +158,7 @@ var SampleApp = function() {
 
         self.app.set('views', path.join(__dirname, 'views'));
         self.app.set('view engine', 'jade');
+        self.app.configure('development', function(){ self.app.locals.pretty = true })
         self.app.use(favicon());
         self.app.use(bodyParser.json());
         self.app.use(bodyParser.urlencoded());
@@ -165,10 +200,17 @@ var SampleApp = function() {
 
 
 
-/**
- *  main():  Main code.
- */
-var zapp = new SampleApp();
-zapp.initialize();
-zapp.start();
+mongoose.connection.on("connected", function(ref) {
+
+    // add your middleware set-up
+    // add your routes
+
+    /**
+     *  main():  Main code.
+     */
+    var zapp = new SampleApp();
+    zapp.initialize();
+    zapp.start();    
+});
+
 
