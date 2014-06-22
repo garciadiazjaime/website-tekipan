@@ -8,7 +8,7 @@ var favicon = require('static-favicon');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/tekipan');
+mongoose.connect('mongodb://localhost/ofertastrabajo');
 var ofertaSchema = mongoose.Schema({
     title: String,
     href: String,
