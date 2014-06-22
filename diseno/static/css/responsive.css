@@ -1,0 +1,61 @@
+@media screen and (max-width: 520px) {
+  /* line 2, ../sass/responsive.sass */
+  .modal-body {
+    background: transparent;
+    min-height: 1px;
+    padding: 0 20px 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  /* line 10, ../sass/responsive.sass */
+  body.home #main_content {
+    top: 410px;
+  }
+
+  /* line 14, ../sass/responsive.sass */
+  header .btn {
+    margin: 15px 0 0;
+  }
+
+  /* line 17, ../sass/responsive.sass */
+  #who-tab {
+    top: -130px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  /* line 22, ../sass/responsive.sass */
+  header.condensed #wrap_citycond {
+    width: 35%;
+  }
+  /* line 25, ../sass/responsive.sass */
+  header.condensed #wrap_citycond select {
+    width: 125%;
+  }
+  /* line 29, ../sass/responsive.sass */
+  header.condensed #searchFormCond button {
+    width: 19%;
+  }
+  /* line 32, ../sass/responsive.sass */
+  header.condensed .social {
+    margin: -31px 0 -7px auto;
+  }
+  /* line 36, ../sass/responsive.sass */
+  header.condensed .btn {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  /* line 42, ../sass/responsive.sass */
+  .offer.result .col-xs-12.col-sm-6 {
+    padding: 0 15px;
+  }
+  /* line 45, ../sass/responsive.sass */
+  .offer.result .sinopsis {
+    min-height: 1px;
+    max-width: 100%;
+  }
+  /* line 49, ../sass/responsive.sass */
+  .offer.result .decor {
+    display: none;
+  }
+}

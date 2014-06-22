@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+	head
+		title= title
+		meta(charset="utf-8")
+		meta(name="author", value="http://mintitmedia.com")
+		meta(name="description", value="")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+
+		link(rel='stylesheet', href='/stylesheets/vendor/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/screen.css')
+	body.home
+		block header
+		block content
+		block about-us
+		block footer
+
+		<script type="text/javascript" src="/javascripts/vendor/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="/javascripts/vendor/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/javascripts/mainctrl.js"></script>

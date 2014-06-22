@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<title>Busca trabajo | Encuentra un nuevo empleo </title>
+	<meta charset="utf-8">
+	<meta name="author" value="http://mintitmedia.com">
+	<meta name="description" value="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="static/css/vendor/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="static/css/screen.css">
+</head>
+<body ng-controller="GralCtrl" class="home">
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<div id="busca-trabajo_brand">
+						<img src="static/images/busca_trabajo.png" alt="Busca Trabajo" />
+						<h1>Busca Trabajo</h1>
+					</div><form name="searchFormCond" id="searchFormCond" role="form">
+						<input type="text" name="positioncond" placeholder="Puesto, Ej. Desarrollador">
+						<div id="wrap_citycond">
+							<select id="citycond">
+								<option>Tijuana</option>
+							</select>
+						</div>
+						<button ng-click="submit(searchFormCond)" class="btn btn-default">
+	  						Buscar
+	  					</button>
+					</form>
+					
+				</div>
+				<div class="col-xs-12 col-sm-6 text-right">
+					<ul class="social">
+						<li><a href="#" title="Facebook" target="blank">Facebook</a></li>
+					</ul>
+					<span id="who-tab"><a href="quienes-somos" title="Quiénes somos" data-toggle="modal" data-target="#about-us">Quiénes somos >></a></span>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-9">
+					<form name="searchForm" id="searchForm" role="form">
+						<div class="row hidden-xs">
+							<div class="col-xs-12 col-sm-5">
+								<label>¿Qué puesto buscas?</label>
+							</div>
+							<div class="col-xs-12 col-sm-5">
+								<label>¿En qué ciudad?</label>
+							</div>
+							<div class="col-xs-12 col-sm-2">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-5">
+							
+								<label class="visible-xs">¿Qué puesto buscas?</label>
+								<input type="position" name="position" placeholder="Ej. Desarrollador">
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<label class="visible-xs">¿En qué ciudad?</label>
+								<div id="wrap_city">
+									<select id="city">
+										<option>Tijuana</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-3">
+								<button ng-click="submit(searchForm)" class="btn btn-default">
+			  						Buscar
+			  					</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</header>
+	<div id="main_content">
+		<div class="container">
+			<h2>Ofertas recientes</h2>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6  col-md-4 col-lg-3">
+					<div class="offer">
+							<h3><a href="#" title="Ingeniero de procesos" target="_blank">Ingeniero de procesos</a></h3>
+
+							<p class="other">
+								<a href="#" title="Ingeniero de procesos" target="_blank">
+									<span>Sueldo:</span>   10000 <br />
+									<span>Tipo de empleo:</span>   Tiempo completo <br />
+									<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.				
+								</a>
+							</p>
+
+
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>Hoy</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<div class="offer">
+
+							<h3><a href="#" title="Proin id neque ac nunc lobortis lacinia vestibulum laoreet est, ut consequat odio eu ne[...]" target="_blank">Proin id neque ac nunc lobortis lacinia vestibulum <span>[...]</span></a></h3>
+
+							<p class="other">
+								<a href="#" title="Proin id neque ac nunc lobortis lacinia vestibulum laoreet est, ut consequat odio eu ne[...]" target="_blank">
+								<span>Sueldo:</span>   10000 <br />
+								<span>Tipo de empleo:</span>   Tiempo completo <br />
+								<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.	
+								</a>
+							</p>
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>Hoy</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<div class="offer">
+							<h3>
+								<a href="#" title="Recepcionista" target="_blank">Aux. Abarrotes, Frutas y Verduras, Vitrinas cuartos [...]</a></h3>
+
+							<p class="other">
+								<a href="#" title="Recepcionista" target="_blank">
+								<span>Sueldo:</span>   10000 <br />
+								<span>Tipo de empleo:</span>   Tiempo completo <br />
+								<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.	
+								</a>
+							</p>
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>02 <span class="small">Días</span></span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<div class="offer">
+							<h3>
+								<a href="#" title="Subgerente de Tienda (Supermercado) Por expansión Suc. Rosarito y Ensenada" target="_blank">Diseñador Gráfico (Practicante 4to a 6to semestre)</a></h3>
+
+							<p class="other">
+								<a href="#" title="Subgerente de Tienda (Supermercado) Por expansión Suc. Rosarito y Ensenada" target="_blank">
+								<span>Sueldo:</span>   10000 <br />
+								<span>Tipo de empleo:</span>   Tiempo completo <br />
+								<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.	
+								</a>
+							</p>
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>Hoy</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6  col-md-4 col-lg-3">
+					<div class="offer">
+							<h3><a href="#" title="Ingeniero de procesos" target="_blank">Ingeniero de procesos</a></h3>
+
+							<p class="other">
+								<a href="#" title="Ingeniero de procesos" target="_blank">
+									<span>Sueldo:</span>   10000 <br />
+									<span>Tipo de empleo:</span>   Tiempo completo <br />
+									<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.				
+								</a>
+							</p>
+
+
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>Hoy</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<div class="offer">
+
+							<h3><a href="#" title="Proin id neque ac nunc lobortis lacinia vestibulum laoreet est, ut consequat odio eu ne[...]" target="_blank">Proin id neque ac nunc lobortis lacinia vestibulum <span>[...]</span></a></h3>
+
+							<p class="other">
+								<a href="#" title="Proin id neque ac nunc lobortis lacinia vestibulum laoreet est, ut consequat odio eu ne[...]" target="_blank">
+								<span>Sueldo:</span>   10000 <br />
+								<span>Tipo de empleo:</span>   Tiempo completo <br />
+								<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.	
+								</a>
+							</p>
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>Hoy</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<div class="offer">
+							<h3>
+								<a href="#" title="Recepcionista" target="_blank">Aux. Abarrotes, Frutas y Verduras, Vitrinas cuartos [...]</a></h3>
+
+							<p class="other">
+								<a href="#" title="Recepcionista" target="_blank">
+								<span>Sueldo:</span>   10000 <br />
+								<span>Tipo de empleo:</span>   Tiempo completo <br />
+								<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.	
+								</a>
+							</p>
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>Hoy</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					<div class="offer">
+							<h3>
+								<a href="#" title="Subgerente de Tienda (Supermercado) Por expansión Suc. Rosarito y Ensenada" target="_blank">Diseñador Gráfico (Practicante 4to a 6to semestre)</a></h3>
+
+							<p class="other">
+								<a href="#" title="Subgerente de Tienda (Supermercado) Por expansión Suc. Rosarito y Ensenada" target="_blank">
+								<span>Sueldo:</span>   10000 <br />
+								<span>Tipo de empleo:</span>   Tiempo completo <br />
+								<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.	
+								</a>
+							</p>
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>Hoy</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6  col-md-4 col-lg-3">
+					<div class="offer">
+							<h3><a href="#" title="Ingeniero de procesos" target="_blank">Ingeniero de procesos</a></h3>
+
+							<p class="other">
+								<a href="#" title="Ingeniero de procesos" target="_blank">
+									<span>Sueldo:</span>   10000 <br />
+									<span>Tipo de empleo:</span>   Tiempo completo <br />
+									<span>Empleador:</span>   WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.				
+								</a>
+							</p>
+
+
+							<ul class="social">
+								<li class="facebook">
+									<a href="#" title="Comparte en el muro de un amigo">Facebook</a>
+								</li>
+							</ul>
+						<div class="date"><span>Hoy</span></div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		
+	</div>
+	
+	<div  id="about-us"  class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">¿Quiénes somos?</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Nullam pellentesque erat dolor, et convallis ligula laoreet at. Integer pulvinar, <a href="http://www.mintitmedia.com" title="Mint IT Media" target="_blank" >Mint IT Media</a> velit eu cursus cursus, nisi neque aliquam dui, vitae tincidunt erat ipsum sit amet ante. </p>
+
+			<p>Proin id neque ac nunc lobortis lacinia vestibulum laoreet est. Ut consequat porta, eu sagittis eros dapibus. Quisque neque erat, rhoncus a massa nec, bibendum vestibulum ante. Phasellus tincidunt metus ut malesuada facilisis.</p>
+			
+			<a href="http://www.mintitmedia.com" title="Visita Mint IT Media" target="_blank" id="mint-button">Visítanos</a> <a href="mailto:info@mintitmedia.com " title="Escríbenos"> info@mintitmedia.com </a>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<footer>
+		<p>© 2010-2014 Tekipan. Powered by <a href="http://www.mintitmedia.com" title="Visita Mint IT Media" target="_blank">Mint</a></p>
+	</footer>
+	
+	<script type="text/javascript" src="static/js/vendor/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="static/js/vendor/bootstrap.min.js"></script>
+	<script type="text/javascript" src="static/js/mainctrl.js"></script>
+</body>
+</html>
