@@ -7,8 +7,21 @@ var path = require('path');
 var favicon = require('static-favicon');
 var bodyParser = require('body-parser');
 
+
+// default to a 'localhost' configuration:
+var connection_string = 'localhost/tekipan';
+// if OPENSHIFT env variables are present, use the available connection info:
+
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+  process.env.OPENSHIFT_APP_NAME;
+}
+
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ofertastrabajo');
+mongoose.connect('mongodb://' + connection_string);
 var ofertaSchema = mongoose.Schema({
     title: String,
     href: String,
