@@ -156,7 +156,7 @@ var SampleApp = function() {
 					res.json({ 'status': 1, 'data': ofertas })    
 				}
 				else{
-					res.json({ 'status': 0 })       
+					res.json({ 'status': 0 })
 				}
 			});
 		};
@@ -166,7 +166,6 @@ var SampleApp = function() {
 			urllib.request('https://www.occ.com.mx/Buscar_Empleo/Resultados?loc=MX-BCN&hits=50&page=1&ci=tijuana', {
 				method: 'POST',
 			}, function(err, data, res) {
-				if (err) return console.error(err);
 				if(!err && res.statusCode == 200){
 					var $ = cheerio.load(data);
 					$('#results_sr').children().each(function(i, item) {
@@ -198,7 +197,11 @@ var SampleApp = function() {
 						})
 					});
 				}
+				else{
+			    	throw err;
+			    }
 			});
+			res.json({ 'status': 1 })
 		}
 
 	};
