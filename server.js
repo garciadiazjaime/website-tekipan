@@ -136,7 +136,12 @@ var SampleApp = function() {
 		self.routes['/'] = function(req, res) {
 			Oferta.find(function (err, ofertas) {
 				if (err) return console.error(err);
-				res.render('index', { title: 'Busca trabajo | Encuentra un nuevo empleo ' });
+				res.render('index', 
+					{ 
+						title: 'Busca trabajo | Encuentra un nuevo empleo ',
+						ofertas: ofertas
+					}
+				);
 			});
 		};
 
@@ -210,6 +215,7 @@ var SampleApp = function() {
 
 		self.app.set('views', path.join(__dirname, 'views'));
 		self.app.set('view engine', 'jade');
+		self.app.configure('development', function(){ self.app.locals.pretty = true })
 		self.app.use(favicon());
 		self.app.use(bodyParser.json());
 		self.app.use(bodyParser.urlencoded());

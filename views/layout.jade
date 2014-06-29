@@ -1,5 +1,5 @@
 doctype html
-html(lang="en")
+html(lang="en", ng-app='ofertaApp')
 	head
 		title= title
 		meta(charset="utf-8")
@@ -9,12 +9,13 @@ html(lang="en")
 
 		link(rel='stylesheet', href='/stylesheets/vendor/bootstrap.min.css')
 		link(rel='stylesheet', href='/stylesheets/screen.css')
-	body.home
+	body.home(ng-controller="ofertaCtrl")
 		block header
 		block content
 		block about-us
 		block footer
 
-		<script type="text/javascript" src="/javascripts/vendor/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript" src="/javascripts/vendor/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/javascripts/mainctrl.js"></script>
+		script(src="/javascripts/vendor/jquery-1.11.0.min.js")
+		script(src="/javascripts/vendor/bootstrap.min.js")
+		script(src="/javascripts/vendor/angular.min.js")
+		script(src="/javascripts/mainctrl.js")
