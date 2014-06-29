@@ -15,7 +15,7 @@ var cheerio = require('cheerio');
 // default to a 'localhost' configuration:
 var connection_string = 'localhost/tekipan';
 // if OPENSHIFT env variables are present, use the available connection info:
-
+/*
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
   process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
@@ -38,7 +38,7 @@ var ofertaSchema = mongoose.Schema({
 });
 
 var Oferta = mongoose.model('Oferta', ofertaSchema)
-
+*/
 
 /**
  *  Define the sample application.
