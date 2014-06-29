@@ -7,9 +7,6 @@ var path = require('path');
 var favicon = require('static-favicon');
 var bodyParser = require('body-parser');
 
-var jsdom = require('jsdom');
-var urllib = require('urllib');
-var cheerio = require('cheerio');
 
 
 // default to a 'localhost' configuration:
@@ -141,49 +138,6 @@ var SampleApp = function() {
 				res.render('index', { title: 'Busca trabajo | Encuentra un nuevo empleo ' });
 			});
 		};
-
-		self.routes['/bot/occ'] = function(req, res){
-			console.log('/bot/occ');
-			urllib.request('https://www.occ.com.mx/Buscar_Empleo/Resultados?loc=MX-BCN&hits=50&page=1&ci=tijuana', {
-				method: 'POST',
-			}, function(err, data, res) {
-				if(!err && res.statusCode == 200){
-					var $ = cheerio.load(data);
-					$('#results_sr').children().each(function(i, item) {
-						var obj = {};
-
-						obj.title = $(item).find('.title_modn_sr a').text();
-						obj.href = $(item).find('.title_modn_sr a').attr('href');
-						obj.timestamp = $(item).find('.fecha_modn_sr').text();
-						obj.description = $(item).find('.descrip_modn_sr').text();
-						obj.salary = $(item).find('.salario_modn_sr').text();
-						obj.company = $(item).find('.company_modn_sr a').text();
-						obj.tag = 'occ';
-						obj.source = 'https://www.occ.com.mx/'
-
-						var oferta = new Oferta({
-							title: obj.title,
-							href: obj.href,
-							timestamp: obj.timestamp,
-							description: obj.description,
-							salary: obj.salary,
-							company: obj.company,
-							tag: obj.tag,
-							source: obj.source,
-						});
-
-						oferta.save(function(err, data){
-							if (err) return console.error(err);
-							console.log('save oferta: ' + obj.tag + ' / ' + obj.title);
-						})
-					});
-				}
-				else{
-			    	throw err;
-			    }
-			});
-			res.json({ 'status': 1 })
-		}
 
 	};
 
