@@ -137,17 +137,18 @@ var SampleApp = function() {
 		};
 
 		self.routes['/'] = function(req, res) {
-			Oferta.find(function (err, ofertas) {
-				if (err) return console.error(err);
+			//Oferta.find(function (err, ofertas) {
+				//if (err) return console.error(err);
 				res.render('index', 
 					{ 
-						title: 'Busca trabajo | Encuentra un nuevo empleo ',
-						ofertas: ofertas
+						title: 'Busca trabajo | Encuentra un nuevo empleo '
+						//ofertas: ofertas
 					}
 				);
-			});
+			//});
 		};
 
+		/*
 		self.routes['/ofertas/get'] = function(req, res) {
 			console.log('ofertas/get');
 			Oferta.find(function (err, ofertas) {
@@ -203,6 +204,7 @@ var SampleApp = function() {
 			});
 			res.json({ 'status': 1 })
 		}
+		*/
 
 	};
 
@@ -260,7 +262,7 @@ var SampleApp = function() {
 
 
 
-mongoose.connection.on("connected", function(ref) {
+//mongoose.connection.on("connected", function(ref) {
 
 	// add your middleware set-up
 	// add your routes
@@ -271,6 +273,6 @@ mongoose.connection.on("connected", function(ref) {
 	var zapp = new SampleApp();
 	zapp.initialize();
 	zapp.start();    
-});
+//});
 
 
