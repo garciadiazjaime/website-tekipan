@@ -7,7 +7,8 @@ var path = require('path');
 var favicon = require('static-favicon');
 var bodyParser = require('body-parser');
 
-var jsdom = require('jsdom');
+var urllib = require('urllib');
+var cheerio = require('cheerio');
 
 // default to a 'localhost' configuration:
 var connection_string = 'localhost/tekipan';
