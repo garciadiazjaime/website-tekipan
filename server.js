@@ -192,11 +192,12 @@ var SampleApp = function() {
 };   /*  Sample Application.  */
 
 
-
-/**
- *  main():  Main code.
- */
-var zapp = new SampleApp();
-zapp.initialize();
-zapp.start();
+mongoose.connection.on("connected", function(ref) {
+	/**
+	 *  main():  Main code.
+	 */
+	var zapp = new SampleApp();
+	zapp.initialize();
+	zapp.start();
+});
 
