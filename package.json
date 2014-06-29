@@ -31,11 +31,7 @@
     "cookie-parser": "~1.0.1",
     "body-parser": "~1.0.0",
     "debug": "~0.7.4",
-    "jade": "~1.3.0",
-    "mongoose": "~3.8.12",
-    "jsdom": "~0.10.5",
-    "cheerio": "^0.13.1",
-    "urllib": "^0.5.8"
+    "jade": "~1.3.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],

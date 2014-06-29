@@ -9,7 +9,7 @@ block header
 						img(src="/images/busca_trabajo.png", alt="Busca Trabajo")
 						h1 Busca Trabajo
 					form(name="searchFormCond", id="searchFormCond", role="form")
-						input(type="text", name="positioncond", placeholder="Puesto, Ej. Desarrollador" ng-model="search")
+						input(type="text", name="positioncond", placeholder="Puesto, Ej. Desarrollador")
 						div#wrap_citycond
 							select#citycond
 								option Tijuana
@@ -26,14 +26,14 @@ block header
 				form#searchForm(name='searchForm', role='form')
 					.row.hidden-xs
 						.col-xs-12.col-sm-5
-							label ¿Qué puesto buscas?
+							label ¿Qué puesto buscas? 2
 						.col-xs-12.col-sm-5
 							label ¿En qué ciudad?
 						.col-xs-12.col-sm-2
 					.row
 						.col-xs-12.col-sm-5
 							label.visible-xs ¿Qué puesto buscas?
-							input(type='position', name='position', placeholder='Ej. Desarrollador' ng-model="search")
+							input(type='position', name='position', placeholder='Ej. Desarrollador')
 						.col-xs-12.col-sm-4
 							label.visible-xs ¿En qué ciudad?
 							#wrap_city
@@ -48,24 +48,26 @@ block content
 		.container
 			h2 Ofertas recientes
 			.row
-				.col-xs-12.col-sm-6.col-md-4.col-lg-3(ng-repeat="oferta in ofertas | filter: search")
+				.col-xs-12.col-sm-6.col-md-4.col-lg-3
 					.offer
 						h3
-							a(href="{{oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank')
-								| {{oferta.title}}
+							a(href='#', title='Ingeniero de procesos', target='_blank')
+								| Ingeniero de procesos
 						p.other
-							a(href="oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank')
+							a(href='#', title='Ingeniero de procesos', target='_blank')
 								span Sueldo:
-								| {{oferta.salary}}
+								| 10000
+								br
+								span Tipo de empleo:
+								| Tiempo completo
 								br
 								span Empleador:
-								| {{oferta.company}}
+								| WELH ALLYN DE MEXICO, S.  DE R.L. DE C.V.
 						ul.social
 							li.facebook
 								a(href='#', title='Comparte en el muro de un amigo') Facebook
 						.date
-							span
-								| {{oferta.timestamp}}
+							span Hoy
 
 block about-us
 	#about-us.modal.face
@@ -83,5 +85,10 @@ block about-us
 block footer
 	footer
 		p
-			| © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Visita Mint IT Media" target="_blank">Mint</a>
+			| © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Visita Mint IT Media" target="_blank">Mint</a>						
+
+
+
+# h1= title
+# p Welcome to #{title}
 
