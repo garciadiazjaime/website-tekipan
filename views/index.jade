@@ -1,46 +1,34 @@
 extends layout
 
 block header
-	header
-		div.container
-			div.row
-				div.col-xs-12.col-sm-6
-					div#busca-trabajo_brand
-						img(src="/images/busca_trabajo.png", alt="Busca Trabajo")
+	header.condensed
+		.container
+			.row
+				.col-xs-12.col-sm-6
+					#busca-trabajo_brand
+						img(src='/images/busca_trabajo.png', alt='Busca Trabajo')
 						h1 Busca Trabajo
-					form(name="searchFormCond", id="searchFormCond", role="form")
-						input(type="text", name="positioncond", placeholder="Puesto, Ej. Desarrollador" ng-model="query")
-						div#wrap_citycond
-							select#citycond
-								option Tijuana
-						button.btn.btn-default Buscar
-
-				div.col-xs-12.col-sm-6.text-right
+					form#searchFormCond(name='searchFormCond', role='form')
+						input#positioncond(type='text', name='positioncond', placeholder='Puesto, Ej. Desarrollador', ng-model="query")
+						button.btn.btn-default(ng-click='search()') Buscar
+				.col-xs-12.col-sm-6.text-right
 					ul.social
 						li
-							a(href="#", title="Facebook", target="_blank") Facebook
+							a(href='#', title='Facebook', target='blank') Facebook
 					span#who-tab
-						a(href="/quienes-somos", title="Quiénes somos", data-toggle="modal", data-target="#about-us") Quiénes somos >>
-
-			.row.col-xs-12.col-sm-9
-				form#searchForm(name='searchForm', role='form')
-					.row.hidden-xs
-						.col-xs-12.col-sm-5
-							label ¿Qué puesto buscas?
-						.col-xs-12.col-sm-5
-							label ¿En qué ciudad?
-						.col-xs-12.col-sm-2
-					.row
-						.col-xs-12.col-sm-5
-							label.visible-xs ¿Qué puesto buscas?
-							input(type='position', name='position', placeholder='Ej. Desarrollador' ng-model="query")
-						.col-xs-12.col-sm-4
-							label.visible-xs ¿En qué ciudad?
-							#wrap_city
-								select#city
-									option Tijuana
-						.col-xs-12.col-sm-3
-							button.btn.btn-default(ng-click="search()") Buscar
+						a(href='quienes-somos', title='Quiénes somos', data-toggle='modal', data-target='#about-us') Quiénes somos 
+			.row
+				.col-xs-12.col-sm-9
+					form#searchForm(name='searchForm', role='form')
+						.row
+							.col-xs-12.col-sm-5
+								label ¿Qué puesto buscas?
+							.col-xs-12.col-sm-2
+						.row
+							.col-xs-12.col-sm-5
+								input(type='text', name='position', placeholder='Ej. Desarrollador', ng-model="query")
+							.col-xs-12.col-sm-3
+								button.btn.btn-default(ng-click='search()') Buscar
 
 
 block content
@@ -84,6 +72,5 @@ block about-us
 
 block footer
 	footer
-		p
-			| © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Visita Mint IT Media" target="_blank">Mint</a>
+		p © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Visita Mint IT Media" target="_blank">Mint</a>
 

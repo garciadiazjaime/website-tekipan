@@ -1,12 +1,10 @@
 var ofertaApp = angular.module('ofertaApp', ['wu.masonry']);
+var ajaxloader=$('<img class="ajax-loader-tiny" src="/images/ajax-loader.gif" style="height: 17px;" />');
 
 ofertaApp.directive('myRepeatDirective', function() {
 	return function(scope, element, attrs) {
 		if (scope.$last){
-			setTimeout(function(){
-				$('#content_ofertas').show();	
-			}, 10);
-			
+			$('#content_ofertas').show();
 		}
 	};
 });
@@ -14,8 +12,11 @@ ofertaApp.directive('myRepeatDirective', function() {
 ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 	$scope.ofertas = [];
 	$scope.query = '';
+	$scope.last_query = '';
 
 	$scope.serviceSearch = function(){
+		$('#searchFormCond').append($(ajaxloader).css({'position': 'absolute', 'top': '7px', 'margin-left': '5px'}));
+		$scope.last_query = $scope.query;
 		$http({
 			method: "GET",
 			url: "/ofertas/get",
@@ -23,6 +24,7 @@ ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 				query : $scope.query
 			}
 		}).success(function(response){
+			$('#searchFormCond img').remove();
 			if(typeof response.status && response.status){
 				$scope.ofertas = response.data;
 			}
@@ -30,8 +32,8 @@ ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 	}
 
 	$scope.search = function(){
-		if($scope.query.length > 2){
-			$scope.serviceSearch()	
+		if($scope.last_query != $scope.query){
+			$scope.serviceSearch()		
 		}
 	}
 

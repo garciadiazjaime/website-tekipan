@@ -147,7 +147,24 @@ var SampleApp = function() {
 
 		self.routes['/ofertas/get'] = function(req, res) {
 			console.log('ofertas/get');
-			Oferta.find( {}, {}, {limit: 21}, function (err, ofertas) {
+			query = typeof req.param('query') != 'undefined' && req.param('query') != '' ? req.param('query') : '';
+			var regex_title = new RegExp(query, 'gi');
+			var regex_description = new RegExp(query, 'gi');
+			var regex_salary = new RegExp(query, 'gi');
+			var regex_company = new RegExp(query, 'gi');
+			var filter = {
+				$or: [
+					{ title: regex_title },
+					{ description: regex_description },
+					{ salary: regex_salary },
+					{ company: regex_company }
+				]
+			};
+			var fields = {};
+			var options = {
+				limit: 51
+			};
+			Oferta.find( filter, fields, options, function (err, ofertas) {
 				if (err) return console.error(err);
 				if(typeof ofertas && ofertas.length){
 					res.json({ 'status': 1, 'data': ofertas })    
