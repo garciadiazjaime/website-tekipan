@@ -62,7 +62,7 @@ var SampleApp = function() {
 			//  Log errors on OpenShift but continue w/ 127.0.0.1 - this
 			//  allows us to run/test the app locally.
 			console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
-			self.ipaddress = "127.0.0.1";
+			self.ipaddress = "0.0.0.0";
 		};
 	};
 
@@ -147,7 +147,7 @@ var SampleApp = function() {
 
 		self.routes['/ofertas/get'] = function(req, res) {
 			console.log('ofertas/get');
-			Oferta.find(function (err, ofertas) {
+			Oferta.find( {}, {}, {limit: 21}, function (err, ofertas) {
 				if (err) return console.error(err);
 				if(typeof ofertas && ofertas.length){
 					res.json({ 'status': 1, 'data': ofertas })    

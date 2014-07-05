@@ -1,0 +1,483 @@
+@import "base"
+
+$img: "../img/"
+
+
+/* ****************** GENERAL ************** */
+body, html
+	margin: 0
+	padding: 0
+
+body
+	background: #fefefe
+	color: #373837
+	font: 12px Verdana,Helvetica,sans-serif
+	letter-spacing: 0.03em
+	line-height: 1.3em
+
+body.search
+	padding: 80px 0 0
+
+body.home
+	header
+		position: fixed
+		width: 100%
+
+	#main_content
+		position: relative
+		top: 260px
+		z-index: 5
+
+#main_content
+	background: #FEFEFE
+	min-height: 660px
+	padding: 0 5px
+
+h2, h3, h4, h5, h6	
+	@extend %arsenal
+	font-size: 18px
+	font-weight: normal
+	color: #316eab
+	line-height: 1.1em
+	text-transform: none
+
+h2
+	@extend %arsenal_bold
+	font-size: 30px
+	font-weight: normal
+	color: #2e2e2f
+	margin-bottom: 7px
+	text-transform: none
+	
+	
+a		
+	&:hover
+		text-decoration: none
+
+
+input
+	background: #ffffff
+	border: none
+	@include border-radius(5px)
+	font-size: 13px
+	margin: 0 0 15px
+	padding: 7px 15px
+	width: 100%
+		
+.social
+	padding: 0
+	margin: 15px 0 0
+	text-align: right
+	
+	li
+		display: inline-block
+		height: 22px
+		margin: 0 0 0 20px
+		width: 22px
+		
+	a
+		background: url(../images/general_sprite.png) 0 0 no-repeat
+		display: block
+		height: 100%
+		line-height: 5000em
+		overflow: hidden
+		
+		&:hover, &:focus, &:active
+			background-position: 0 -48px
+		
+		
+	.twitter
+		a
+			background-position: -32px 0
+
+			&:hover, &:focus, &:active
+				background-position: -32px -48px
+				
+				
+/* --------------- Header--------------- */
+header
+	background: url(../images/banner.jpg) center top no-repeat
+	background-size: cover
+	padding: 35px 0 40px
+	
+	form
+		background: rgba(0,0,0,.3)
+		@include border-radius(4px)
+		margin: 0
+		padding: 17px 15px
+	
+	label
+		color: #fcef5a
+		@extend %oxygen
+		font-size: 14px
+		letter-spacing: 0.03em
+		margin: 0 0 10px
+	
+	.btn
+		background: #316eab
+		border: none
+		color: #e5e5e4
+		@extend %arsenal
+		font-size: 14px
+		text-transform: uppercase
+		
+		&:hover
+			background: lighten(#316eab, 10)
+			color: #e5e5e4
+
+#wrap_city
+	background: #fff url(../images/general_sprite.png) right -334px no-repeat
+	@include border-radius(5px)
+	display: inline-block
+	height: 30px
+	margin: 0
+	overflow: hidden
+	vertical-align: top
+	width: 100%
+
+	&:hover
+		background-position: right -382px
+
+	select
+		background: transparent
+		border: none
+		height: 100%
+		margin: 0
+		padding: 5px
+		width: 115%
+		-webkit-appearance: none
+
+
+header.condensed
+	background: #343434
+	padding: 5px 0
+	position: fixed
+	top: 0
+	width: 100%
+	z-index: 100
+
+	input
+		margin: 0
+	
+	#who-tab
+		top: auto
+		bottom: -20px
+
+	#busca-trabajo_brand, #searchFormCond
+		display: inline-block
+		
+	#busca-trabajo_brand
+		width: 20% 
+		
+	#searchFormCond
+		padding-bottom: 0
+		padding-top: 0
+		text-align: center
+		width: 80%
+	
+		button
+			vertical-align: top
+			width: 10%
+		
+	#positioncond
+		width: 40%
+		
+	#wrap_citycond
+		background: url(../images/general_sprite.png) right -334px no-repeat
+		@include border-radius(5px)
+		display: inline-block
+		height: 30px
+		margin: 0
+		overflow: hidden
+		vertical-align: top
+		width: 20%
+		
+		&:hover
+			background-position: right -382px
+		
+		select
+			background: transparent
+			border: none
+			height: 100%
+			margin: 0
+			padding: 5px
+			width: 115%
+			-webkit-appearance: none
+			
+		
+	.col-xs-12.col-sm-6
+		width: 100%
+		
+	.col-xs-12.col-sm-6.text-right
+		height: 1px
+		
+	#searchForm
+		display: none
+		
+	.social
+		margin: -38px 0 0 auto
+		width: 60px
+		
+#searchFormCond
+	background: transparent
+	display: none
+	padding: 17px 40px 17px 15px
+	
+#busca-trabajo_brand
+	img
+		max-width: 100%
+	
+	h1
+		display: none
+	
+#who-tab
+	@include border-radius(0 0 5px 5px)
+	display: inline-block
+	@extend %arsenal
+	font-size: 12px
+	overflow: hidden
+	position: relative
+	text-align: center
+	top: -75px
+	width: 140px
+	
+	a
+		background: #a6d05d
+		color: #ffffff
+		display: block
+		height: 100%
+		padding: 8px 16px
+		
+		&:hover, &:focus, &:active
+			background: darken(#a6d05d, 10)
+			text-decoration: none
+		
+	
+	
+/* --------------- Footer --------------- */
+
+footer
+	background: #316eab
+	color: #f9fcfa
+	font: 10px Verdana, sans-serif
+	margin: 90px 0 0
+	padding: 25px 10px
+	text-align: center
+	
+	p
+		margin: 0
+	
+	a
+		color: #61bb46
+		
+		&:hover
+			color: lighten(#61bb46, 10)
+
+
+#content_ofertas
+	display: none
+
+/* --------------- Job offer --------------- */
+.offer
+	background: #f3f4f4
+	border: 1px solid #d1d1d1
+	padding: 18px 15px 80px
+	margin: 10px 20px 20px 10px
+	width: 300px
+	position: relative
+	
+	.social
+		margin: 0 0 11px
+		position: absolute
+		right: 0
+		text-align: left
+		top: 43px
+		z-index: 5
+		
+		li
+			height: 20px
+			margin: 0 10px 0 0
+			width: 21px
+			
+			a
+				background-position: -75px -1px
+				
+				&:hover
+					background-position: -75px -49px
+				
+		.twitter
+			a
+				background-position: -116px -1px
+				
+				&:hover
+					background-position: -116px -49px
+	
+	a
+		color: #373837
+		
+		&:hover
+			color: lighten(#373837, 10)
+	
+	h3
+		line-height: 1.2em
+		margin: 0 50px 10px 0
+		min-height: 45px
+		padding: 0
+		
+		a
+			color: #316eab
+			display: block
+			
+			span
+				font-size: 85%
+	
+	h5
+		bottom: 110px
+		color: #373837
+		@extend %oxygen
+		font-size: 13px
+		margin-bottom:  5px
+		position: absolute
+		text-transform: uppercase
+		
+	.date
+		background: url(../images/decor-date.png) right bottom no-repeat
+		display: block
+		padding: 0 0 20px
+		position: absolute
+		right: -16px
+		top: 12px
+		
+		span
+			background: #a6d05d
+			@include border-radius(5px 0 0 5px)
+			color: #fcfcfc
+			display: inline-block
+			@extend %arsenal_bold
+			font-size: 18px
+			letter-spacing: -0.04em
+			min-width: 70px
+			padding: 6px 10px
+			text-align: center
+			text-transform: uppercase
+			
+			.small
+				font-size: 13px
+				min-width: 1px
+				padding: 0
+				
+	&:hover, &:focus, &:active
+		h3
+			a
+				color: lighten(#316EAB, 10)
+	
+.sinopsis
+	min-height: 200px
+	
+	a
+		display: block
+	
+.other
+	bottom: 0
+	height: 70px
+	position: absolute
+	
+	span
+		color: #64bc45
+		@extend %arsenal_bold
+		font-size: 10px
+		text-transform: uppercase
+		
+	a
+		display: block
+
+.offer.result		
+	min-height: 1px
+	padding: 20px 30px
+	
+	
+	.decor
+		background: #dddddc
+		height: 95px
+		position: absolute
+		left: 0
+		top: 0
+		width: 1px
+	
+	h3
+		min-height: 1px
+	
+	.sinopsis
+		max-width: 380px
+		min-height: 140px
+
+
+	.other
+		height: auto
+		position: static
+		
+		
+	.col-xs-12.col-sm-6
+		margin: 10px 0 0
+		padding:  0 15px 0 50px
+		
+	.col-xs-12.col-sm-6.first
+		padding:  0 50px 0 15px
+		
+	.col-xs-12.col-sm-6.text-right
+		float: right
+
+a.ver_completo
+	background: url(../images/general_sprite.png) left -153px no-repeat
+	color: #316eab
+	display: block
+	@extend %arsenal_bold
+	font-size: 15px
+	padding: 4px 0 4px 20px
+	text-transform: uppercase
+	
+	&:hover, &:focus, &:active
+		color: lighten(#316eab,10)
+		text-decoration: none
+	
+		
+/* ****************** MODAL ************** */
+.modal-header
+	border: none
+	padding: 20px 20px 15px
+	
+	h4		
+		color: #316eab
+		@extend %arsenal_bold
+		font-size: 30px
+		line-height: 1em
+		padding: 20px 0 0
+
+	
+.modal-body
+	background: url(../images/mint-sidebanner.jpg) right top no-repeat
+	font-size: 13px
+	min-height: 275px
+	padding: 0 190px 20px 20px
+	
+	a
+		color: #a6d05d
+		
+		&:hover
+			color: darken(#a6d05d, 10)
+	
+#mint-button
+	background: #a6d05d url(../images/general_sprite.png) left -247px no-repeat
+	@include border-radius(0 0 5px 0)
+	color: #ffffff
+	display: inline-block
+	@extend %arsenal
+	font-size: 16px
+	margin: 15px 0 5px
+	padding: 10px 15px 10px 40px
+	
+	&:hover
+		background-color: darken(#a6d05d, 5)
+		
+		
+@import "responsive.sass"

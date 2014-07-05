@@ -1,25 +1,42 @@
-var ofertaApp = angular.module('ofertaApp', []);
+var ofertaApp = angular.module('ofertaApp', ['wu.masonry']);
+
+ofertaApp.directive('myRepeatDirective', function() {
+	return function(scope, element, attrs) {
+		if (scope.$last){
+			setTimeout(function(){
+				$('#content_ofertas').show();	
+			}, 10);
+			
+		}
+	};
+});
 
 ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
-	$scope.ofertas = [
-		{
-		  "title": "Asesor comercial - Giro Educativo",
-		  "href": "/Empleo/Oferta/7474810/Asesor-comercial-Giro-Educativo?loc=MX-BCN&amp;hits=50&amp;page=1&amp;ci=tijuana&amp;bdtype=OCCM&amp;f=true",
-		  "timestamp": "Jun 19",
-		  "description": "Empresa internacional líder en el giro Editorial digital requiere por expansión y posicionamiento de nuevos productos:     Asesor Comercial - Giro Educativo         Requisitos:     Zona: Residencia  ... ",
-		  "salary": "$15,000 MXN - $22,000 MXN Mensual",
-		  "company": "Planeta DeAgostini Servicios, S.A. de C.V.",
-		  "tag": "occ",
-		  "source": "https://www.occ.com.mx/"
-		}
-	];
+	$scope.ofertas = [];
+	$scope.query = '';
 
-	$scope.init = function(){
-		$http.get('ofertas/get').success(function(response) {
+	$scope.serviceSearch = function(){
+		$http({
+			method: "GET",
+			url: "/ofertas/get",
+			params: {
+				query : $scope.query
+			}
+		}).success(function(response){
 			if(typeof response.status && response.status){
-				$scope.ofertas = response.data;	
+				$scope.ofertas = response.data;
 			}
 		});
+	}
+
+	$scope.search = function(){
+		if($scope.query.length > 2){
+			$scope.serviceSearch()	
+		}
+	}
+
+	$scope.init = function(){
+		$scope.serviceSearch();
 	}
 
 	$scope.init();
