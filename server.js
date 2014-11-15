@@ -313,8 +313,9 @@ var SampleApp = function() {
 				if(!err && res.statusCode == 200){
 					var $ = cheerio.load(data);
 					var tmp = res.headers['set-cookie'][0];
-					bits = tmp.split(';');
-					cookie = res.headers['set-cookie'][1] + ';' + bits[0] + ';';
+					var bits = tmp.split(';');
+					var cookie = res.headers['set-cookie'][1] + ';' + bits[0] + ';';
+					var ofertas_list = [];
 					
 					urllib.request('http://app.empleo.gob.mx/STPSEmpleoWebBack/busquedaEspecificaOfertas.do?method=orderByColumn&orderType=desc&columnNumber=5', {
 					//urllib.request('http://app.empleo.gob.mx/STPSEmpleoWebBack/busquedaEspecificaOfertas.do?method=page', {
@@ -340,83 +341,140 @@ var SampleApp = function() {
 							 			tag: 'empleogob',
 							 			source: 'http://app.empleo.gob.mx/',
 									};
-									
-									obj.title = $(tds[0]).find('.titulo').text();
+
+									obj.title = cleanString($(tds[0]).find('.titulo').text());
 									obj.href = $(tds[0]).find('.titulo').attr('href');
-									obj.timestamp = $(tds[4]).text();
-									obj.salary = $(tds[3]).text();
-									obj.company = $(tds[2]).text();
+									obj.timestamp = getTimeFromString('empleogob', cleanString($(tds[4]).text()));
+									obj.salary = cleanString($(tds[3]).text());
+									obj.company = cleanString($(tds[2]).text());
 
-									var oferta = new Oferta({
-										title: obj.title,
-							 			href: obj.href,
-							 			timestamp: obj.timestamp,
-							 			description: obj.description,
-							 			salary: obj.salary,
-							 			company: obj.company,
-							 			tag: obj.tag,
-							 			source: obj.source,
-									});
-
-									oferta.save(function(err, data){
-										if (err) return console.error(err);
-										console.log('save oferta: ' + data.tag + ' / ' + data.title);
-									});
+									ofertas_list.push(obj);
 								}
 							}
 
+							console.log(ofertas_list)
+							var ofertas_list_index = 0;
+							getDescription(ofertas_list_index);
 
-							urllib.request('http://app.empleo.gob.mx/STPSEmpleoWebBack/busquedaEspecificaOfertas.do?method=goToPage&goToPageNumber=2', {
-								method: 'POST',
-								headers: {
-									'Cookie': cookie,
+							function cleanUpSpecialChars(str){
+							    // str = str.replace(/[ÀÁÂÃÄÅ]/g,"A");
+							    str = str.replace(/[�]/g,"é");
+							    return str;
+							}
+
+							function cleanString(data){
+								response = data.replace(/(\r\n\t|\n|\r|\t)/gm,"");
+								response = cleanUpSpecialChars(response.trim());
+								return response;
+							}
+
+							function getTimeFromString(format, data){
+								var response = '';
+								if(format == 'empleogob'){
+									var bits = data.split('de');
+									response =  bits[2] + '-' + getMonthFromString(bits[1]) + '-' + bits[0];
 								}
-							}, function(err, data, res) {
-								if(!err && res.statusCode == 200){
-									var $ = cheerio.load(data);
-									console.log('================ PAG 2================')
+								return response;
+							}
 
-									trs = $('tbody tr');
-									for(var i=1; i<trs.length; i++){
-										var tds = $(trs[i]).find('td')
-										if($(tds[0]).find('.titulo').length){
-											var obj = {
-												title: '',
-									 			href: '',
-									 			timestamp: '',
-									 			description: '',
-									 			salary: '',
-									 			company: '',
-									 			tag: 'empleogob',
-									 			source: 'http://app.empleo.gob.mx/',
-											};
-											
-											obj.title = $(tds[0]).find('.titulo').text();
-											obj.href = $(tds[0]).find('.titulo').attr('href');
-											obj.timestamp = $(tds[4]).text();
-											obj.salary = $(tds[3]).text();
-											obj.company = $(tds[2]).text();
-
-											var oferta = new Oferta({
-												title: obj.title,
-									 			href: obj.href,
-									 			timestamp: obj.timestamp,
-									 			description: obj.description,
-									 			salary: obj.salary,
-									 			company: obj.company,
-									 			tag: obj.tag,
-									 			source: obj.source,
-											});
-
-											oferta.save(function(err, data){
-												if (err) return console.error(err);
-												console.log('save oferta: ' + data.tag + ' / ' + data.title);
-											});
-										}
+							function getMonthFromString(data){
+								var months = ['', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+								var response = months.indexOf(data.trim().toLowerCase());
+								return response;
+							}
+							
+							function getDescription(index){
+								urllib.request(ofertas_list[index]['source']+ofertas_list[index]['href'], {
+									method: 'POST',
+									headers: {
+										'Cookie': cookie,
 									}
+								}, function(err, data, res) {
+									if(!err && res.statusCode == 200){
+										var $ = cheerio.load(data);
+										var tmp = $('.ficha_relacionada')
+										var ps = $(tmp[1]).find('p');
+										var description = $(ps[1]).html();
+										description = description.replace(/<\/?[^>]+(>|$)/g, "");
+										description = description.replace('Funciones: ', '');
 
-								}
-							});
+										var oferta = new Oferta({
+											title: ofertas_list[index]['title'],
+								 			href: ofertas_list[index]['href'],
+								 			timestamp: ofertas_list[index]['timestamp'],
+								 			description: description,
+								 			salary: ofertas_list[index]['salary'],
+								 			company: ofertas_list[index]['company'],
+								 			tag: ofertas_list[index]['tag'],
+								 			source: ofertas_list[index]['source'],
+										});
+
+										oferta.save(function(err, data){
+											if (err) return console.error(err);
+											console.log('save oferta: ' + data.tag + ' / ' + data.title);
+
+											if(index  + 1 < ofertas_list.length){
+												getDescription(index + 1);
+											}
+										});
+									}
+									else{
+								    	throw err;
+								    }
+								});
+							};
+
+							// urllib.request('http://app.empleo.gob.mx/STPSEmpleoWebBack/busquedaEspecificaOfertas.do?method=goToPage&goToPageNumber=2', {
+							// 	method: 'POST',
+							// 	headers: {
+							// 		'Cookie': cookie,
+							// 	}
+							// }, function(err, data, res) {
+							// 	if(!err && res.statusCode == 200){
+							// 		var $ = cheerio.load(data);
+							// 		console.log('================ PAG 2================')
+
+							// 		trs = $('tbody tr');
+							// 		for(var i=1; i<trs.length; i++){
+							// 			var tds = $(trs[i]).find('td')
+							// 			if($(tds[0]).find('.titulo').length){
+							// 				var obj = {
+							// 					title: '',
+							// 		 			href: '',
+							// 		 			timestamp: '',
+							// 		 			description: '',
+							// 		 			salary: '',
+							// 		 			company: '',
+							// 		 			tag: 'empleogob',
+							// 		 			source: 'http://app.empleo.gob.mx/',
+							// 				};
+											
+							// 				obj.title = $(tds[0]).find('.titulo').text();
+							// 				obj.href = $(tds[0]).find('.titulo').attr('href');
+							// 				obj.timestamp = $(tds[4]).text();
+							// 				obj.salary = $(tds[3]).text();
+							// 				obj.company = $(tds[2]).text();
+
+							// 				var oferta = new Oferta({
+							// 					title: obj.title,
+							// 		 			href: obj.href,
+							// 		 			timestamp: obj.timestamp,
+							// 		 			description: obj.description,
+							// 		 			salary: obj.salary,
+							// 		 			company: obj.company,
+							// 		 			tag: obj.tag,
+							// 		 			source: obj.source,
+							// 				});
+
+							// 				oferta.save(function(err, data){
+							// 					if (err) return console.error(err);
+							// 					console.log('save oferta: ' + data.tag + ' / ' + data.title);
+							// 				});
+							// 			}
+							// 		}
+
+							// 	}
+							// });
 
 						}
 					});
