@@ -325,6 +325,7 @@ var SampleApp = function() {
 						}
 					}, function(err, data, res) {
 						if(!err && res.statusCode == 200){
+
 							var $ = cheerio.load(data);
 
 							trs = $('tbody tr');
@@ -354,7 +355,12 @@ var SampleApp = function() {
 
 							console.log(ofertas_list)
 							var ofertas_list_index = 0;
-							getDescription(ofertas_list_index);
+
+							scrap_ofertas_from_pagina(2, function(){
+								console.log(ofertas_list);
+								getDescription(ofertas_list_index);
+							});
+							
 
 							function cleanUpSpecialChars(str){
 							    // str = str.replace(/[ÀÁÂÃÄÅ]/g,"A");
@@ -424,57 +430,65 @@ var SampleApp = function() {
 								});
 							};
 
-							// urllib.request('http://app.empleo.gob.mx/STPSEmpleoWebBack/busquedaEspecificaOfertas.do?method=goToPage&goToPageNumber=2', {
-							// 	method: 'POST',
-							// 	headers: {
-							// 		'Cookie': cookie,
-							// 	}
-							// }, function(err, data, res) {
-							// 	if(!err && res.statusCode == 200){
-							// 		var $ = cheerio.load(data);
-							// 		console.log('================ PAG 2================')
+							function scrap_ofertas_from_pagina(page, callback){
+								urllib.request('http://app.empleo.gob.mx/STPSEmpleoWebBack/busquedaEspecificaOfertas.do?method=goToPage&goToPageNumber=' + page, {
+									method: 'POST',
+									headers: {
+										'Cookie': cookie,
+									}
+								}, function(err, data, res) {
+									if(!err && res.statusCode == 200){
+										var $ = cheerio.load(data);
+										console.log('================ PAG ' + page + '================')
 
-							// 		trs = $('tbody tr');
-							// 		for(var i=1; i<trs.length; i++){
-							// 			var tds = $(trs[i]).find('td')
-							// 			if($(tds[0]).find('.titulo').length){
-							// 				var obj = {
-							// 					title: '',
-							// 		 			href: '',
-							// 		 			timestamp: '',
-							// 		 			description: '',
-							// 		 			salary: '',
-							// 		 			company: '',
-							// 		 			tag: 'empleogob',
-							// 		 			source: 'http://app.empleo.gob.mx/',
-							// 				};
-											
-							// 				obj.title = $(tds[0]).find('.titulo').text();
-							// 				obj.href = $(tds[0]).find('.titulo').attr('href');
-							// 				obj.timestamp = $(tds[4]).text();
-							// 				obj.salary = $(tds[3]).text();
-							// 				obj.company = $(tds[2]).text();
+										trs = $('tbody tr');
+										for(var i=1; i<trs.length; i++){
+											var tds = $(trs[i]).find('td')
+											if($(tds[0]).find('.titulo').length){
+												var obj = {
+													title: '',
+										 			href: '',
+										 			timestamp: '',
+										 			description: '',
+										 			salary: '',
+										 			company: '',
+										 			tag: 'empleogob',
+										 			source: 'http://app.empleo.gob.mx/',
+												};
+												
+												obj.title = cleanString($(tds[0]).find('.titulo').text());
+												obj.href = $(tds[0]).find('.titulo').attr('href');
+												obj.timestamp = getTimeFromString('empleogob', cleanString($(tds[4]).text()));
+												obj.salary = cleanString($(tds[3]).text());
+												obj.company = cleanString($(tds[2]).text());
 
-							// 				var oferta = new Oferta({
-							// 					title: obj.title,
-							// 		 			href: obj.href,
-							// 		 			timestamp: obj.timestamp,
-							// 		 			description: obj.description,
-							// 		 			salary: obj.salary,
-							// 		 			company: obj.company,
-							// 		 			tag: obj.tag,
-							// 		 			source: obj.source,
-							// 				});
+												ofertas_list.push(obj);
 
-							// 				oferta.save(function(err, data){
-							// 					if (err) return console.error(err);
-							// 					console.log('save oferta: ' + data.tag + ' / ' + data.title);
-							// 				});
-							// 			}
-							// 		}
+												// var oferta = new Oferta({
+												// 	title: obj.title,
+										 	// 		href: obj.href,
+										 	// 		timestamp: obj.timestamp,
+										 	// 		description: obj.description,
+										 	// 		salary: obj.salary,
+										 	// 		company: obj.company,
+										 	// 		tag: obj.tag,
+										 	// 		source: obj.source,
+												// });
 
-							// 	}
-							// });
+												// oferta.save(function(err, data){
+												// 	if (err) return console.error(err);
+												// 	console.log('save oferta: ' + data.tag + ' / ' + data.title);
+												// });
+											}
+										}
+										if(page < 5){
+											scrap_ofertas_from_pagina(page+1, callback);
+										}else{
+											callback();
+										}
+									}
+								});
+							}
 
 						}
 					});
