@@ -36,7 +36,7 @@ var ofertaSchema = mongoose.Schema({
 });
 
 var Oferta = mongoose.model('Oferta', ofertaSchema)
-// var OfertaModel = mongoose.model('Oferta', ofertaSchema)
+var scrapper = new Scrapper(Oferta);
 
 
 
@@ -179,7 +179,6 @@ var SampleApp = function() {
 		};
 
 		self.routes['/bot/occ'] = function(req, res){
-			var scrapper = new Scrapper(Oferta);
 			scrapper.doOcc(function(response, data){
 				if(response){
 					res.json({ 'status': true, 'items_saved': data })	
@@ -191,86 +190,14 @@ var SampleApp = function() {
 		}
 
 		self.routes['/bot/empleonuevo'] = function(req, res){
-			console.log('/bot/empleonuevo');
-			urllib.request('http://www.empleonuevo.com/oportunidades/?ciudad=Tijuana&pagina=1&cantidad=10', {
-				method: 'POST',
-			}, function(err, data, res) {
-				if(!err && res.statusCode == 200){
-					var $ = cheerio.load(data);
-					$('#quicklist .registros tr').each(function(i, item) {
-						var obj = {
-							title: '',
-				 			href: '',
-				 			timestamp: '',
-				 			description: '',
-				 			salary: '',
-				 			company: '',
-				 			tag: 'empleonuevo',
-				 			source: 'http://www.empleonuevo.com/',
-						};
-
-						var tds = $(item).find('td');
-						obj.title = $(tds[2]).find('.link').text();
-						if(obj.title){
-							obj.href = $(tds[2]).find('.link').attr('href');
-							obj.timestamp = $(tds[0]).html()
-							obj.company = $(tds[3]).find('.link').text();
-
-							if(obj.href.indexOf(obj.source) !== -1){
-								obj.href = obj.href.replace(obj.source, '/');
-							}
-						
-							var oferta = new Oferta({
-								title: obj.title,
-					 			href: obj.href,
-					 			timestamp: obj.timestamp,
-					 			description: obj.description,
-					 			salary: obj.salary,
-					 			company: obj.company,
-					 			tag: obj.tag,
-					 			source: obj.source,
-							});	
-							oferta.save(function(err, data){
-								if (err) return console.error(err);
-								console.log('save oferta: ' + obj.tag + ' / ' + obj.title);
-
-								var oferta_id = data._id
-								console.log(oferta_id)
-
-								urllib.request(data.source + data.href, {
-									method: 'POST',
-								}, function(err, data, res) {
-									if(!err && res.statusCode == 200){
-										var $ = cheerio.load(data);
-										var description = $('#description .descripcion').html();
-										var salary = $('#description table.colspan2 tbody tr').last().text();
-										if(salary.length && salary.indexOf('Sueldo') !== -1){
-											salary = salary.replace('Sueldo', '');
-										}
-
-										var conditions = {'_id': oferta_id};
-										var update = {
-											'description': description,
-											'salary': salary
-										}
-										var options = { multi: true };
-
-										Oferta.update(conditions, update, options, callback);
-
-										function callback(err, numAffected){
-											console.log('numAffected ' + numAffected);
-										}
-									}
-								});
-							})
-						}
-					});
+			scrapper.doEmpleoNuevo(function(response, data){
+				if(response){
+					res.json({ 'status': true, 'items_saved': data })	
 				}
 				else{
-			    	throw err;
-			    }
+					res.json({ 'status': false, 'error': data })
+				}
 			});
-			res.json({ 'status': 1 })
 		}
 
 		self.routes['/bot/empleogob'] = function(req, res){
