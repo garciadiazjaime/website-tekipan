@@ -48,7 +48,7 @@ function Scrapper(Oferta) {
 
     this.doEmpleoNuevo = function(callback){
 		console.log('Scrapper::doEmpleoNuevo');
-		lista_ofertas = []
+		lista_ofertas = [];
 		urllib.request('http://www.empleonuevo.com/oportunidades/?ciudad=Tijuana&pagina=1&ordenar=fecha&orden=desc&cantidad=100', {
 			method: 'POST',
 		}, function(err, data, res) {
@@ -119,6 +119,43 @@ function Scrapper(Oferta) {
 		});
     }
 
+    this.doCompuTrabajo = function(callback){
+    	console.log('Scrapper::doCompuTrabajo');
+    	lista_ofertas = [];
+    	urllib.request('http://www.computrabajo.com.mx/ofertas-de-trabajo/empleos-en-baja-california-en-tijuana?pubdate=1', {
+			method: 'POST',
+		}, function(err, data, res) {
+			if(!err && res.statusCode == 200){
+				var $ = cheerio.load(data);
+				var info = $('#p_ofertas >li');
+				for(var i=0; i<info.length; i++){
+					var obj = {
+						title: $(info[i]).find('.js-o-link').text(),
+			 			href: $(info[i]).find('.js-o-link').attr('href'),
+			 			timestamp: new Date().toJSON().slice(0,10),
+			 			description: $(info[i]).find('p').text(),
+			 			salary: '',
+			 			company: $(info[i]).find('h2').text(),
+			 			tag: 'computrabajo',
+			 			source: 'http://www.computrabajo.com.mx/',
+					};
+					lista_ofertas.push(obj);
+				}
+				setCompuTrabajoSalary(0, function(response, data){
+					if(response){
+						saveOfertas(lista_ofertas, callback);
+					}
+					else{
+						callback(false, data)
+					}
+				});
+			}
+			else{
+		    	callback(false, err);
+		    }
+		});
+    }
+
     function saveOfertas(data, callback){
     	if(data.length){
 	    	for(var i=0; i<data.length; i++){
@@ -158,9 +195,11 @@ function Scrapper(Oferta) {
 	}
 
 	function sanitizeDescription(value){
-		value = value.replace(/<\/?[^>]+(>|$)/g, "");
-		value = value.replace('Funciones: ', '');
-		return value;
+		if(value){
+			value = value.replace(/<\/?[^>]+(>|$)/g, "");
+			return value.replace('Funciones: ', '');
+		}
+		return '';
 	}
 
 	function cleanString(data){
@@ -265,6 +304,26 @@ function Scrapper(Oferta) {
 		else{
 			callback(true, '');
 		}	
+	}
+
+	function setCompuTrabajoSalary(index, callback){
+		if(index < lista_ofertas.length){
+			urllib.request(lista_ofertas[index]['source'] + lista_ofertas[index]['href'], {
+				method: 'POST',
+			}, function(err, data, res) {
+				if(!err && res.statusCode == 200){
+					var $ = cheerio.load(data);
+					lista_ofertas[index]['salary'] = $('.detalle_oferta li').first().text();
+					setCompuTrabajoSalary(index+1, callback)						
+				}
+				else{
+					callback(false, err)
+				}
+			});
+		}
+		else{
+			callback(true, '');	
+		}
 	}
 }
 

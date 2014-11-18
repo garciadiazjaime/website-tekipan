@@ -212,71 +212,14 @@ var SampleApp = function() {
 		}
 
 		self.routes['/bot/computrabajo'] = function(req, res){
-			console.log('/bot/computrabajo');
-			urllib.request('http://www.computrabajo.com.mx/ofertas-de-trabajo/empleos-en-baja-california-en-tijuana?pubdate=3', {
-				method: 'POST',
-			}, function(err, data, res) {
-				if(!err && res.statusCode == 200){
-					var lista_ofertas = [];
-					var $ = cheerio.load(data);
-					var data = $('#p_ofertas >li');
-					for(var i=0; i<data.length; i++){
-						var obj = {
-							title: '',
-				 			href: '',
-				 			timestamp: new Date().toJSON().slice(0,10),
-				 			description: '',
-				 			salary: '',
-				 			company: '',
-				 			tag: 'computrabajo',
-				 			source: 'http://www.computrabajo.com.mx/',
-						};
-
-						obj.title = $(data[i]).find('.js-o-link').text();
-						obj.href = $(data[i]).find('.js-o-link').attr('href');
-						obj.company = $(data[i]).find('h2').text();
-						obj.description = $(data[i]).find('p').text();
-
-						lista_ofertas.push(obj);
-					}
-
-					get_salary(0);
-
-					function get_salary(index){
-						if(index < lista_ofertas.length){
-							urllib.request(lista_ofertas[index]['source'] + lista_ofertas[index]['href'], {
-								method: 'POST',
-							}, function(err, data, res) {
-								if(!err && res.statusCode == 200){
-									var $ = cheerio.load(data);
-									lista_ofertas[index]['salary'] = $('.detalle_oferta li').first().text();
-
-									var oferta = new Oferta({
-										title: lista_ofertas[index]['title'],
-							 			href: lista_ofertas[index]['href'],
-							 			timestamp: lista_ofertas[index]['timestamp'],
-							 			description: lista_ofertas[index]['description'],
-							 			salary: lista_ofertas[index]['salary'],
-							 			company: lista_ofertas[index]['company'],
-							 			tag: lista_ofertas[index]['tag'],
-							 			source: lista_ofertas[index]['source'],
-									});
-									oferta.save(function(err, data){
-										if (err) return console.error(err);
-										console.log('save oferta: ' + data.tag + ' / ' + data.title);
-										get_salary(index+1)
-									});
-									
-								}
-							});
-						}
-					}
+			scrapper.doCompuTrabajo(function(response, data){
+				if(response){
+					res.json({ 'status': true, 'items_saved': data })	
 				}
 				else{
-			    	throw err;
-			    }
+					res.json({ 'status': false, 'error': data })
+				}
 			});
-			res.json({ 'status': 1 })
 		}
 	};
 
