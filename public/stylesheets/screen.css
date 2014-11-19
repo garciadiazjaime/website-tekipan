@@ -579,21 +579,18 @@ a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
 
 /* line 457, ../sass/screen.sass */
 .modal-body {
-  background: url(../images/mint-sidebanner.jpg) right top no-repeat;
   font-size: 13px;
-  min-height: 275px;
-  padding: 0 190px 20px 20px;
 }
-/* line 463, ../sass/screen.sass */
+/* line 460, ../sass/screen.sass */
 .modal-body a {
   color: #a6d05d;
 }
-/* line 466, ../sass/screen.sass */
+/* line 463, ../sass/screen.sass */
 .modal-body a:hover {
   color: #90c238;
 }
 
-/* line 469, ../sass/screen.sass */
+/* line 466, ../sass/screen.sass */
 #mint-button {
   background: #a6d05d url(../images/general_sprite.png) left -247px no-repeat;
   -moz-border-radius: 0 0 5px 0;
@@ -605,7 +602,7 @@ a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   margin: 15px 0 5px;
   padding: 10px 15px 10px 40px;
 }
-/* line 479, ../sass/screen.sass */
+/* line 476, ../sass/screen.sass */
 #mint-button:hover {
   background-color: #9bca49;
 }

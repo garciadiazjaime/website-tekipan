@@ -31,7 +31,7 @@ block header
 block content
 	#main_content
 		.container
-			h2 Ofertas de Trabajo en Tijuana
+			h1 Ofertas de Trabajo en Tijuana
 			#content_ofertas(masonry)
 				.masonry-brick.offer(ng-repeat="oferta in ofertas", my-repeat-directive)
 					h3
@@ -42,10 +42,10 @@ block content
 					br
 					p.other
 						a(href="oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank')
-							span Sueldo:
+							span Sueldo: 
 							| {{oferta.salary}}
 							br
-							span Empleador:
+							span Empresa: 
 							| {{oferta.company}}
 					.date
 						span
@@ -62,7 +62,13 @@ block about-us
 						| ¿Quiénes somos?
 				.modal-body
 					p
-						| We rock, <a href="http://mintitmedia.com" title="Mint IT Media" target="_blank" >Mint IT Media</a>, we just rock
+						| <b>Busca Trabajo &copy;</b> presenta de manera sencilla y agradable ofertas de trabajo extraidas de otros sitios. Dejando el link a la fuente orginal, siendo simplemente un facilitador de la información.
+					p
+						| En Busca Trabajo solo almacenamos ofertas de los últimos 21 días. Para una búsqueda más profunda consulta las fuentes origianles.
+					p
+						| Busca Trabajo es un proyecto desarrollado por <a href="http://mintitmedia.com" title="Mint IT Media" target="_blank" >Mint IT Media</a>; grupo de trabajo enfocado en diseñar y desarrollar soluciones Web.
+					p
+						| Para cualquier comentario, sugerencia o duda nos puedes escribir a <a href="mailto:info@mintitmedia.com" title="contacto">info@mintitmedia.com</a>.
 
 block footer
 	footer
