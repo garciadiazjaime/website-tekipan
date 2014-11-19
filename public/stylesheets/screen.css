@@ -6,7 +6,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Arsenal_Regular";
   src: url("../fonts/arsenal.eot");
@@ -14,7 +13,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Arsenal_Bold";
   src: url("../fonts/arsenal_bold.eot");
@@ -22,7 +20,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 /* line 38, ../sass/_base.sass */
 header label, .offer h5 {
   font-family: "Oxygen_Bold", Arial, sans-serif;
@@ -76,7 +73,7 @@ body.home #main_content {
 
 /* line 31, ../sass/screen.sass */
 #main_content {
-  background: #fefefe;
+  background: #FEFEFE;
   min-height: 660px;
   padding: 0 5px;
 }
@@ -106,12 +103,10 @@ a:hover {
 
 /* line 58, ../sass/screen.sass */
 input {
-  background: white;
+  background: #ffffff;
   border: none;
-  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   font-size: 13px;
   margin: 0 0 15px;
@@ -163,10 +158,8 @@ header {
 /* line 103, ../sass/screen.sass */
 header form {
   background: rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
+  -webkit-border-radius: 4px;
   border-radius: 4px;
   margin: 0;
   padding: 17px 15px;
@@ -194,11 +187,9 @@ header .btn:hover {
 
 /* line 128, ../sass/screen.sass */
 #wrap_city {
-  background: white url(../images/general_sprite.png) right -334px no-repeat;
-  -webkit-border-radius: 5px;
+  background: #fff url(../images/general_sprite.png) right -334px no-repeat;
   -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   display: inline-block;
   height: 30px;
@@ -238,7 +229,7 @@ header.condensed input {
 /* line 162, ../sass/screen.sass */
 header.condensed #who-tab {
   top: auto;
-  bottom: -20px;
+  bottom: -7px;
 }
 /* line 166, ../sass/screen.sass */
 header.condensed #busca-trabajo_brand, header.condensed #searchFormCond {
@@ -253,7 +244,7 @@ header.condensed #busca-trabajo_brand {
 header.condensed #searchFormCond {
   padding-bottom: 0;
   padding-top: 0;
-  text-align: center;
+  text-align: right;
   width: 79%;
 }
 /* line 179, ../sass/screen.sass */
@@ -268,10 +259,8 @@ header.condensed #positioncond {
 /* line 186, ../sass/screen.sass */
 header.condensed #wrap_citycond {
   background: url(../images/general_sprite.png) right -334px no-repeat;
-  -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   display: inline-block;
   height: 30px;
@@ -330,10 +319,8 @@ header.condensed .social {
 
 /* line 234, ../sass/screen.sass */
 #who-tab {
-  -webkit-border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
-  -ms-border-radius: 0 0 5px 5px;
-  -o-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0;
   border-radius: 0 0 5px 5px;
   display: inline-block;
   font-size: 12px;
@@ -346,7 +333,7 @@ header.condensed .social {
 /* line 245, ../sass/screen.sass */
 #who-tab a {
   background: #a6d05d;
-  color: white;
+  color: #ffffff;
   display: block;
   height: 100%;
   padding: 8px 16px;
@@ -461,20 +448,17 @@ footer a:hover {
 }
 /* line 344, ../sass/screen.sass */
 .offer .date {
-  background: url(../images/decor-date.png) right bottom no-repeat;
   display: block;
   padding: 0 0 20px;
   position: absolute;
-  right: -16px;
+  right: 0px;
   top: 12px;
 }
-/* line 352, ../sass/screen.sass */
+/* line 351, ../sass/screen.sass */
 .offer .date span {
   background: #a6d05d;
-  -webkit-border-radius: 5px 0 0 5px;
   -moz-border-radius: 5px 0 0 5px;
-  -ms-border-radius: 5px 0 0 5px;
-  -o-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px 0 0 5px;
   color: #fcfcfc;
   display: inline-block;
@@ -485,49 +469,49 @@ footer a:hover {
   text-align: center;
   text-transform: uppercase;
 }
-/* line 365, ../sass/screen.sass */
+/* line 364, ../sass/screen.sass */
 .offer .date span .small {
   font-size: 13px;
   min-width: 1px;
   padding: 0;
 }
-/* line 372, ../sass/screen.sass */
+/* line 371, ../sass/screen.sass */
 .offer:hover h3 a, .offer:focus h3 a, .offer:active h3 a {
   color: #4587ca;
 }
 
-/* line 375, ../sass/screen.sass */
+/* line 374, ../sass/screen.sass */
 .sinopsis {
   min-height: 200px;
 }
-/* line 378, ../sass/screen.sass */
+/* line 377, ../sass/screen.sass */
 .sinopsis a {
   display: block;
 }
 
-/* line 381, ../sass/screen.sass */
+/* line 380, ../sass/screen.sass */
 .other {
   bottom: 0;
   height: 70px;
   position: absolute;
 }
-/* line 386, ../sass/screen.sass */
+/* line 385, ../sass/screen.sass */
 .other span {
   color: #64bc45;
   font-size: 10px;
   text-transform: uppercase;
 }
-/* line 392, ../sass/screen.sass */
+/* line 391, ../sass/screen.sass */
 .other a {
   display: block;
 }
 
-/* line 395, ../sass/screen.sass */
+/* line 394, ../sass/screen.sass */
 .offer.result {
   min-height: 1px;
   padding: 20px 30px;
 }
-/* line 400, ../sass/screen.sass */
+/* line 399, ../sass/screen.sass */
 .offer.result .decor {
   background: #dddddc;
   height: 95px;
@@ -536,35 +520,35 @@ footer a:hover {
   top: 0;
   width: 1px;
 }
-/* line 408, ../sass/screen.sass */
+/* line 407, ../sass/screen.sass */
 .offer.result h3 {
   min-height: 1px;
 }
-/* line 411, ../sass/screen.sass */
+/* line 410, ../sass/screen.sass */
 .offer.result .sinopsis {
   max-width: 380px;
   min-height: 140px;
 }
-/* line 416, ../sass/screen.sass */
+/* line 415, ../sass/screen.sass */
 .offer.result .other {
   height: auto;
   position: static;
 }
-/* line 421, ../sass/screen.sass */
+/* line 420, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6 {
   margin: 10px 0 0;
   padding: 0 15px 0 50px;
 }
-/* line 425, ../sass/screen.sass */
+/* line 424, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6.first {
   padding: 0 50px 0 15px;
 }
-/* line 428, ../sass/screen.sass */
+/* line 427, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6.text-right {
   float: right;
 }
 
-/* line 431, ../sass/screen.sass */
+/* line 430, ../sass/screen.sass */
 a.ver_completo {
   background: url(../images/general_sprite.png) left -153px no-repeat;
   color: #316eab;
@@ -573,19 +557,19 @@ a.ver_completo {
   padding: 4px 0 4px 20px;
   text-transform: uppercase;
 }
-/* line 440, ../sass/screen.sass */
+/* line 439, ../sass/screen.sass */
 a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   color: #4587ca;
   text-decoration: none;
 }
 
 /* ****************** MODAL ************** */
-/* line 446, ../sass/screen.sass */
+/* line 445, ../sass/screen.sass */
 .modal-header {
   border: none;
   padding: 20px 20px 15px;
 }
-/* line 450, ../sass/screen.sass */
+/* line 449, ../sass/screen.sass */
 .modal-header h4 {
   color: #316eab;
   font-size: 30px;
@@ -593,37 +577,35 @@ a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   padding: 20px 0 0;
 }
 
-/* line 458, ../sass/screen.sass */
+/* line 457, ../sass/screen.sass */
 .modal-body {
   background: url(../images/mint-sidebanner.jpg) right top no-repeat;
   font-size: 13px;
   min-height: 275px;
   padding: 0 190px 20px 20px;
 }
-/* line 464, ../sass/screen.sass */
+/* line 463, ../sass/screen.sass */
 .modal-body a {
   color: #a6d05d;
 }
-/* line 467, ../sass/screen.sass */
+/* line 466, ../sass/screen.sass */
 .modal-body a:hover {
   color: #90c238;
 }
 
-/* line 470, ../sass/screen.sass */
+/* line 469, ../sass/screen.sass */
 #mint-button {
   background: #a6d05d url(../images/general_sprite.png) left -247px no-repeat;
-  -webkit-border-radius: 0 0 5px 0;
   -moz-border-radius: 0 0 5px 0;
-  -ms-border-radius: 0 0 5px 0;
-  -o-border-radius: 0 0 5px 0;
+  -webkit-border-radius: 0;
   border-radius: 0 0 5px 0;
-  color: white;
+  color: #ffffff;
   display: inline-block;
   font-size: 16px;
   margin: 15px 0 5px;
   padding: 10px 15px 10px 40px;
 }
-/* line 480, ../sass/screen.sass */
+/* line 479, ../sass/screen.sass */
 #mint-button:hover {
   background-color: #9bca49;
 }

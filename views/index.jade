@@ -12,9 +12,6 @@ block header
 						input#positioncond(type='text', name='positioncond', placeholder='Puesto, Ej. Desarrollador', ng-model="query")
 						button.btn.btn-default(ng-click='search()') Buscar
 				.col-xs-12.col-sm-6.text-right
-					ul.social
-						li
-							a(href='#', title='Facebook', target='blank') Facebook
 					span#who-tab
 						a(href='quienes-somos', title='Quiénes somos', data-toggle='modal', data-target='#about-us') Quiénes somos 
 			.row
@@ -34,7 +31,7 @@ block header
 block content
 	#main_content
 		.container
-			h2 Ofertas recientes
+			h2 Ofertas de Trabajo en Tijuana
 			#content_ofertas(masonry)
 				.masonry-brick.offer(ng-repeat="oferta in ofertas", my-repeat-directive)
 					h3
@@ -50,9 +47,6 @@ block content
 							br
 							span Empleador:
 							| {{oferta.company}}
-					ul.social
-						li.facebook
-							a(href='#', title='Comparte en el muro de un amigo') Facebook
 					.date
 						span
 							| {{oferta.timestamp}}
