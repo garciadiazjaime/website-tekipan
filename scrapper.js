@@ -130,7 +130,7 @@ function Scrapper(Oferta) {
 				var info = $('#p_ofertas >li');
 				for(var i=0; i<info.length; i++){
 					var obj = {
-						title: $(info[i]).find('.js-o-link').text(),
+						title: sanitizeTitle($(info[i]).find('.js-o-link').text()),
 			 			href: $(info[i]).find('.js-o-link').attr('href'),
 			 			timestamp: new Date().toJSON().slice(0,10),
 			 			description: $(info[i]).find('p').text(),
@@ -169,6 +169,17 @@ function Scrapper(Oferta) {
 		else{
 			callback(true, 'There is no info to save');
 		}
+    }
+
+    function capitaliseFirstLetter(string){
+    	return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+
+    function sanitizeTitle(value){
+		value = value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+		value = value.replace(/tijuana|mexicali|tijuana bc/gi, '');
+		value = value.replace(/\s{2,}/g, ' ');
+		return capitaliseFirstLetter(value.trim().toLowerCase());
     }
 
     function sanitizeHref(href, needle){
