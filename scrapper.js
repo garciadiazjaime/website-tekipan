@@ -29,7 +29,7 @@ function Scrapper(Oferta) {
 					var obj = {
 						title: $(data[i]).find('.title_modn_sr a').text(),
 			 			href: $(data[i]).find('.title_modn_sr a').attr('href'),
-			 			timestamp: $(data[i]).find('.fecha_modn_sr').text(),
+			 			timestamp: getTimeFromString('occ', $(data[i]).find('.fecha_modn_sr').text()),
 			 			description: $(data[i]).find('.descrip_modn_sr').text(),
 			 			salary: $(data[i]).find('.salario_modn_sr').text(),
 			 			company: $(data[i]).find('.company_modn_sr a').text(),
@@ -61,10 +61,10 @@ function Scrapper(Oferta) {
 						var obj = {
 							title: $(row[2]).find('.link').text(),
 				 			href: sanitizeHref($(row[2]).find('.link').attr('href'), 'http://www.empleonuevo.com/'),
-				 			timestamp: $(row[0]).html(),
+				 			timestamp: getTimeFromString('empleonuevo', $(row[0]).html()),
 				 			description: '',
 				 			salary: '',
-				 			company: $(row[3]).find('.link').text(),
+				 			company: cleanString($(row[3]).find('.link').text()),
 				 			tag: 'empleonuevo',
 				 			source: 'http://www.empleonuevo.com',
 						};
@@ -133,7 +133,7 @@ function Scrapper(Oferta) {
 						title: sanitizeTitle($(info[i]).find('.js-o-link').text()),
 			 			href: $(info[i]).find('.js-o-link').attr('href'),
 			 			timestamp: new Date().toJSON().slice(0,10),
-			 			description: $(info[i]).find('p').text(),
+			 			description: capitaliseFirstLetter(cleanString($(info[i]).find('p').text())),
 			 			salary: '',
 			 			company: $(info[i]).find('h2').text(),
 			 			tag: 'computrabajo',
@@ -172,6 +172,7 @@ function Scrapper(Oferta) {
     }
 
     function capitaliseFirstLetter(string){
+    	string = string.toLowerCase();
     	return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
@@ -179,7 +180,7 @@ function Scrapper(Oferta) {
 		value = value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
 		value = value.replace(/tijuana|mexicali|tijuana bc/gi, '');
 		value = value.replace(/\s{2,}/g, ' ');
-		return capitaliseFirstLetter(value.trim().toLowerCase());
+		return capitaliseFirstLetter(value.trim());
     }
 
     function sanitizeHref(href, needle){
@@ -190,9 +191,13 @@ function Scrapper(Oferta) {
     }
 
     function sanitizeSalary(value){
-    	if(value.length && value.indexOf('Sueldo') !== -1){
-			value = value.replace('Sueldo', '');
-		}
+    	if(value.length){
+    		value = cleanString(value);
+    		if(value.indexOf('Sueldo') !== -1){
+				value = value.replace('Sueldo', '');
+			}
+			value = capitaliseFirstLetter(value);
+    	}
 		else{
 			value = '';
 		}
@@ -208,20 +213,30 @@ function Scrapper(Oferta) {
 	function sanitizeDescription(value){
 		if(value){
 			value = value.replace(/<\/?[^>]+(>|$)/g, "");
-			return value.replace('Funciones: ', '');
+			value = value.replace('Funciones: ', '');
+			value = cleanString(value);
+			if(value.length > 240){
+				value = value.substring(0, 240) + '...';
+			}
+			return value;
 		}
 		return '';
 	}
 
 	function cleanString(data){
 		var response = data.replace(/(\r\n\t|\n|\r|\t)/gm,"");
+		response = response.replace(/\s{2,}/g, ' ');
 		response = cleanUpSpecialChars(response.trim());
 		return response;
 	}
 
 	function getTimeFromString(format, data){
 		var response = '';
-		if(format == 'empleogob'){
+		if(format == 'occ' || format == 'empleonuevo'){
+			var bits = data.split(' ');
+			response =  new Date().getFullYear() + '-' + getMonthFromString(bits[1]) + '-' + bits[0];
+		}
+		else if(format == 'empleogob'){
 			var bits = data.split('de');
 			response =  bits[2] + '-' + getMonthFromString(bits[1]) + '-' + bits[0];
 		}
@@ -229,8 +244,9 @@ function Scrapper(Oferta) {
 	}
 
 	function getMonthFromString(data){
-		var months = ['', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-		var response = months.indexOf(data.trim().toLowerCase());
+		var months_full = ['', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+		var months_short = ['', 'ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+		var response = (data.length > 3) ? months_full.indexOf(data.trim().toLowerCase()) : months_short.indexOf(data.trim().toLowerCase());
 		return response;
 	}
 
@@ -241,7 +257,7 @@ function Scrapper(Oferta) {
 			}, function(err, data, res) {
 				if(!err && res.statusCode == 200){
 					var $ = cheerio.load(data);
-					lista_ofertas[index]['description'] =  $('#description .descripcion').html();
+					lista_ofertas[index]['description'] =  sanitizeDescription($('#description .descripcion').html());
 					lista_ofertas[index]['salary'] = sanitizeSalary($('#description table.colspan2 tbody tr').last().text());
 					setEmpleoNuevoCompletOferta(lista_ofertas, index+1, callback);
 				}
@@ -267,12 +283,12 @@ function Scrapper(Oferta) {
 					var tds = $(trs[i]).find('td')
 					if($(tds[0]).find('.titulo').length){
 						var obj = {
-							title: cleanString($(tds[0]).find('.titulo').text()),
+							title: capitaliseFirstLetter(cleanString($(tds[0]).find('.titulo').text())),
 				 			href: $(tds[0]).find('.titulo').attr('href'),
 				 			timestamp: getTimeFromString('empleogob', cleanString($(tds[4]).text())),
 				 			description: '',
 				 			salary: cleanString($(tds[3]).text()),
-				 			company: cleanString($(tds[2]).text()),
+				 			company: capitaliseFirstLetter(cleanString($(tds[2]).text())),
 				 			tag: 'empleogob',
 				 			source: 'http://app.empleo.gob.mx/',
 						};
