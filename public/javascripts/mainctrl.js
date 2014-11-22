@@ -37,12 +37,49 @@ ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 
 	$scope.search = function(){
 		if($scope.last_query != $scope.query){
-			$scope.serviceSearch()		
+			$scope.serviceSearch();
+			ga('send', 'event', 'input', 'query', $scope.query);
 		}
+	}
+
+	$scope.sendEvent = function(value, data){
+		if(value == 1){
+			// quienes somos
+			ga('send', 'event', 'button', 'click', 'quienes-somos');	
+		}
+		else if(value == 2){
+			// click en oferta
+			ga('send', 'event', 'oferta', data['tag'], data['_id']);
+		}
+		else if(value == 3){
+			// click en mint
+			ga('send', 'event', 'button', 'click', 'mintitmedia');
+		}
+		else if(value == 31){
+			// click en mint
+			ga('send', 'event', 'button', 'click', 'powered_mintitmedia');
+		}
+		else if(value == 4){
+			// click en mint
+			ga('send', 'event', 'button', 'click', 'email');
+		}
+		else if(value == 5){
+			// click en mint
+			ga('send', 'event', 'page', 'scroll', 'end_of_page');
+		}
+	}
+
+	$scope.scrollListener = function(){
+		$(window).scroll(function() {
+			if($(window).scrollTop() + $(window).height() == $(document).height()) {
+				$scope.sendEvent(5);
+			}
+		});
 	}
 
 	$scope.init = function(){
 		$scope.serviceSearch();
+		$scope.scrollListener();
 	}
 
 	$scope.init();

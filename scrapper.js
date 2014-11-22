@@ -138,7 +138,7 @@ function Scrapper(Oferta) {
 			 			salary: '',
 			 			company: $(info[i]).find('h2').text(),
 			 			tag: 'computrabajo',
-			 			source: 'http://www.computrabajo.com.mx/',
+			 			source: 'http://www.computrabajo.com.mx',
 					};
 					lista_ofertas.push(obj);
 				}

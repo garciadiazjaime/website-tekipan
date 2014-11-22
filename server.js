@@ -141,7 +141,7 @@ var SampleApp = function() {
 				if (err) return console.error(err);
 				res.render('index', 
 					{ 
-						title: 'Busca trabajo | Encuentra un nuevo empleo ',
+						title: 'Busca ofertas de trabajo en Tijuana | Encuentra nuevo empleo',
 						ofertas: ofertas
 					}
 				);

@@ -14,7 +14,7 @@ block header
 						button.btn.btn-default(ng-click='search()') Buscar
 				.col-xs-12.col-sm-6.text-right
 					span#who-tab
-						a(href='quienes-somos', title='Quiénes somos', data-toggle='modal', data-target='#about-us') Quiénes somos 
+						a(href='quienes-somos', title='Quiénes somos', data-toggle='modal', data-target='#about-us', ng-click='sendEvent(1)') Quiénes somos 
 			.row
 				.col-xs-12.col-sm-9
 					form#searchForm(name='searchForm', role='form')
@@ -36,13 +36,13 @@ block content
 			#content_ofertas(masonry)
 				.masonry-brick.offer(ng-repeat="oferta in ofertas", my-repeat-directive)
 					h3
-						a(href="{{oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank')
+						a(href="{{oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank', ng-click='sendEvent(2, oferta)')
 							| {{oferta.title}}
 					div
 						| {{oferta.description}}
 					br
 					p.other
-						a(href="oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank')
+						a(href="oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank', ng-click='sendEvent(2, oferta)')
 							span Sueldo: 
 							| {{oferta.salary}}
 							br
@@ -67,11 +67,11 @@ block about-us
 					p
 						| En Busca Trabajo solo podrás ver hasta 100 resultados. Para una búsqueda más profunda consulta las fuentes originales.
 					p
-						| Busca Trabajo es un proyecto desarrollado por <a href="http://mintitmedia.com" title="Mint IT Media" target="_blank" >Mint IT Media</a>; grupo de trabajo enfocado en el desarrollo y diseño de soluciones Web.
+						| Busca Trabajo es un proyecto desarrollado por <a href="http://mintitmedia.com" title="Mint IT Media" target="_blank" ng-click='sendEvent(3)'>Mint IT Media</a>; grupo de trabajo enfocado en el desarrollo y diseño de soluciones Web.
 					p
-						| Para cualquier comentario, sugerencia o duda nos puedes escribir a <a href="mailto:info@mintitmedia.com" title="contacto">info@mintitmedia.com</a>.
+						| Para cualquier comentario, sugerencia o duda nos puedes escribir a <a href="mailto:info@mintitmedia.com" title="contacto" ng-click='sendEvent(4)'>info@mintitmedia.com</a>.
 
 block footer
 	footer
-		p © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Desarrollo y Diseño Web" target="_blank">Mint</a>
+		p © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Desarrollo y Diseño Web" target="_blank" ng-click='sendEvent(31)'>Mint</a>
 
