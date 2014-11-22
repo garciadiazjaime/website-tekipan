@@ -240,7 +240,11 @@ function Scrapper(Oferta) {
 
 	function getTimeFromString(format, data){
 		var response = '';
-		if(format == 'occ' || format == 'empleonuevo'){
+		if(format == 'occ'){
+			var bits = data.split(' ');
+			response =  new Date().getFullYear() + '-' + getMonthFromString(bits[0]) + '-' + bits[1];
+		}
+		if(format == 'empleonuevo'){
 			var bits = data.split(' ');
 			response =  new Date().getFullYear() + '-' + getMonthFromString(bits[1]) + '-' + bits[0];
 		}
