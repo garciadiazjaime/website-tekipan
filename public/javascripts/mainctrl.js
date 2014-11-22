@@ -15,6 +15,7 @@ ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 	$scope.last_query = '';
 
 	$scope.serviceSearch = function(){
+		$('#msg').text('');
 		$('#searchFormCond').append($(ajaxloader).css({'position': 'absolute', 'top': '7px', 'margin-left': '5px'}));
 		$scope.last_query = $scope.query;
 		$http({
@@ -27,6 +28,9 @@ ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 			$('#searchFormCond img').remove();
 			if(typeof response.status && response.status){
 				$scope.ofertas = response.data;
+			}
+			else{
+				$('#msg').text('Sin resultados');
 			}
 		});
 	}

@@ -9,6 +9,7 @@ block header
 						img(src='/images/busca_trabajo.png', alt='Busca Trabajo')
 						h1 Busca Trabajo
 					form#searchFormCond(name='searchFormCond', role='form')
+						span#msg.text-danger(ng-if="query")
 						input#positioncond(type='text', name='positioncond', placeholder='Puesto, Ej. Desarrollador', ng-model="query")
 						button.btn.btn-default(ng-click='search()') Buscar
 				.col-xs-12.col-sm-6.text-right
@@ -72,5 +73,5 @@ block about-us
 
 block footer
 	footer
-		p © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Visita Mint IT Media" target="_blank">Mint</a>
+		p © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Desarrollo y Diseño Web" target="_blank">Mint</a>
 

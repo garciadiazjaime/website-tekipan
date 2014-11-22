@@ -165,7 +165,7 @@ var SampleApp = function() {
 			};
 			var fields = {};
 			var options = {
-				limit: 51
+				limit: 102
 			};
 			Oferta.find( filter, fields, options, function (err, ofertas) {
 				if (err) return console.error(err);
