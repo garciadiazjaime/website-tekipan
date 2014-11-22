@@ -14,11 +14,12 @@ function Scrapper(Oferta) {
     }
 
     var lista_ofertas = [];
+    var counter_new_jobs = 0;
     var ofertas = new OfertasDAO(Oferta);
 
     this.doOcc = function (callback) {
     	console.log('Scrapper::doOcc');
-    	lista_ofertas = []
+    	lista_ofertas = [], counter_new_jobs = 0;
     	urllib.request('https://www.occ.com.mx/Buscar_Empleo/Resultados?loc=MX-BCN&hits=100&page=1&ci=tijuana', {
 			method: 'POST',
 		}, function(err, data, res) {
@@ -38,7 +39,7 @@ function Scrapper(Oferta) {
 					};
 					lista_ofertas.push(obj);
 				}
-				saveOfertas(lista_ofertas, callback);
+				saveOfertas(0, callback);
 			}
 			else{
 		    	callback(false, err)
@@ -48,7 +49,7 @@ function Scrapper(Oferta) {
 
     this.doEmpleoNuevo = function(callback){
 		console.log('Scrapper::doEmpleoNuevo');
-		lista_ofertas = [];
+		lista_ofertas = [], counter_new_jobs = 0;
 		urllib.request('http://www.empleonuevo.com/oportunidades/?ciudad=Tijuana&pagina=1&ordenar=fecha&orden=desc&cantidad=100', {
 			method: 'POST',
 		}, function(err, data, res) {
@@ -73,7 +74,7 @@ function Scrapper(Oferta) {
 					}
 				}
 				setEmpleoNuevoCompletOferta(lista_ofertas, 0, function(){
-					saveOfertas(lista_ofertas, callback)
+					saveOfertas(0, callback)
 				});
 			}
 			else{
@@ -84,7 +85,7 @@ function Scrapper(Oferta) {
 
     this.doEmpleoGob = function(callback){
     	console.log('Scrapper::doEmpleoGob');
-    	lista_ofertas = [];
+    	lista_ofertas = [], counter_new_jobs = 0;
     	urllib.request('http://app.empleo.gob.mx/STPSEmpleoWebBack/busquedaEspecificaOfertas.do?method=encontrar', {
 			method: 'POST',
 			data:{
@@ -101,7 +102,7 @@ function Scrapper(Oferta) {
 					if(response){
 						setEmpleoGobDescription(cookie, 0, function(response, data){
 							if(response){
-								saveOfertas(lista_ofertas, callback)
+								saveOfertas(0, callback)
 							}
 							else{
 								callback(false, data);
@@ -121,7 +122,7 @@ function Scrapper(Oferta) {
 
     this.doCompuTrabajo = function(callback){
     	console.log('Scrapper::doCompuTrabajo');
-    	lista_ofertas = [];
+    	lista_ofertas = [], counter_new_jobs = 0;
     	urllib.request('http://www.computrabajo.com.mx/ofertas-de-trabajo/empleos-en-baja-california-en-tijuana?pubdate=1', {
 			method: 'POST',
 		}, function(err, data, res) {
@@ -143,7 +144,7 @@ function Scrapper(Oferta) {
 				}
 				setCompuTrabajoSalary(0, function(response, data){
 					if(response){
-						saveOfertas(lista_ofertas, callback);
+						saveOfertas(0, callback);
 					}
 					else{
 						callback(false, data)
@@ -156,18 +157,25 @@ function Scrapper(Oferta) {
 		});
     }
 
-    function saveOfertas(data, callback){
-    	if(data.length){
-	    	for(var i=0; i<data.length; i++){
-				ofertas.insertEntry(data[i], function(data) {
-		            console.log('save oferta: ' + data.tag + ' / ' + data.title);
-		        });
-			}
-			console.log(data.length + ' ofertas guardads de ' + data[0].tag);
-			callback(true, data.length);
-		}
-		else{
-			callback(true, 'There is no info to save');
+    function saveOfertas(index, callback){
+    	if(index < lista_ofertas.length){
+			Oferta.findOne({'href': lista_ofertas[index]['href']}, '_id', function (err, oferta_id) {
+				if (err) return callback(false, err);
+				
+				if(oferta_id == null){
+					ofertas.insertEntry(lista_ofertas[index], function(data) {
+			            console.log('save oferta: ' + data.tag + ' / ' + data.title);
+			            counter_new_jobs++;
+			            saveOfertas(index+1, callback);
+			        });
+				}
+				else{
+					saveOfertas(index+1, callback);
+				}
+			});
+		}else{
+			console.log(counter_new_jobs + ' ofertas guardads');
+			callback(true, counter_new_jobs);
 		}
     }
 
@@ -290,7 +298,7 @@ function Scrapper(Oferta) {
 				 			salary: cleanString($(tds[3]).text()),
 				 			company: capitaliseFirstLetter(cleanString($(tds[2]).text())),
 				 			tag: 'empleogob',
-				 			source: 'http://app.empleo.gob.mx/',
+				 			source: 'http://app.empleo.gob.mx',
 						};
 						lista_ofertas.push(obj);
 					}
