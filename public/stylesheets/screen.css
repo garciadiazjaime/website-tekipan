@@ -357,8 +357,16 @@ header.condensed .social {
   text-decoration: none;
 }
 
+/* --------------- Adsense --------------- */
+/* line 267, ../sass/screen.sass */
+#adsense {
+  padding-top: 70px;
+  text-align: center;
+  margin: 0 auto;
+}
+
 /* --------------- Footer --------------- */
-/* line 269, ../sass/screen.sass */
+/* line 274, ../sass/screen.sass */
 footer {
   background: #316eab;
   color: #f9fcfa;
@@ -367,26 +375,26 @@ footer {
   padding: 25px 10px;
   text-align: center;
 }
-/* line 277, ../sass/screen.sass */
+/* line 282, ../sass/screen.sass */
 footer p {
   margin: 0;
 }
-/* line 280, ../sass/screen.sass */
+/* line 285, ../sass/screen.sass */
 footer a {
   color: #61bb46;
 }
-/* line 283, ../sass/screen.sass */
+/* line 288, ../sass/screen.sass */
 footer a:hover {
   color: #81c96b;
 }
 
-/* line 287, ../sass/screen.sass */
+/* line 292, ../sass/screen.sass */
 #content_ofertas {
   display: none;
 }
 
 /* --------------- Job offer --------------- */
-/* line 291, ../sass/screen.sass */
+/* line 296, ../sass/screen.sass */
 .offer {
   background: #f3f4f4;
   border: 1px solid #d1d1d1;
@@ -395,7 +403,7 @@ footer a:hover {
   width: 300px;
   position: relative;
 }
-/* line 299, ../sass/screen.sass */
+/* line 304, ../sass/screen.sass */
 .offer .social {
   margin: 0 0 11px;
   position: absolute;
@@ -404,53 +412,53 @@ footer a:hover {
   top: 43px;
   z-index: 5;
 }
-/* line 307, ../sass/screen.sass */
+/* line 312, ../sass/screen.sass */
 .offer .social li {
   height: 20px;
   margin: 0 10px 0 0;
   width: 21px;
 }
-/* line 312, ../sass/screen.sass */
+/* line 317, ../sass/screen.sass */
 .offer .social li a {
   background-position: -75px -1px;
 }
-/* line 315, ../sass/screen.sass */
+/* line 320, ../sass/screen.sass */
 .offer .social li a:hover {
   background-position: -75px -49px;
 }
-/* line 319, ../sass/screen.sass */
+/* line 324, ../sass/screen.sass */
 .offer .social .twitter a {
   background-position: -116px -1px;
 }
-/* line 322, ../sass/screen.sass */
+/* line 327, ../sass/screen.sass */
 .offer .social .twitter a:hover {
   background-position: -116px -49px;
 }
-/* line 325, ../sass/screen.sass */
+/* line 330, ../sass/screen.sass */
 .offer a {
   color: #373837;
 }
-/* line 328, ../sass/screen.sass */
+/* line 333, ../sass/screen.sass */
 .offer a:hover {
   color: #505250;
 }
-/* line 331, ../sass/screen.sass */
+/* line 336, ../sass/screen.sass */
 .offer h3 {
   line-height: 1.2em;
   margin: 0 50px 10px 0;
   min-height: 45px;
   padding: 0;
 }
-/* line 337, ../sass/screen.sass */
+/* line 342, ../sass/screen.sass */
 .offer h3 a {
   color: #316eab;
   display: block;
 }
-/* line 341, ../sass/screen.sass */
+/* line 346, ../sass/screen.sass */
 .offer h3 a span {
   font-size: 85%;
 }
-/* line 344, ../sass/screen.sass */
+/* line 349, ../sass/screen.sass */
 .offer h5 {
   bottom: 110px;
   color: #373837;
@@ -459,7 +467,7 @@ footer a:hover {
   position: absolute;
   text-transform: uppercase;
 }
-/* line 353, ../sass/screen.sass */
+/* line 358, ../sass/screen.sass */
 .offer .date {
   display: block;
   padding: 0 0 20px;
@@ -467,7 +475,7 @@ footer a:hover {
   right: 0px;
   top: 12px;
 }
-/* line 360, ../sass/screen.sass */
+/* line 365, ../sass/screen.sass */
 .offer .date span {
   background: #a6d05d;
   -moz-border-radius: 5px 0 0 5px;
@@ -482,49 +490,49 @@ footer a:hover {
   text-align: center;
   text-transform: uppercase;
 }
-/* line 373, ../sass/screen.sass */
+/* line 378, ../sass/screen.sass */
 .offer .date span .small {
   font-size: 13px;
   min-width: 1px;
   padding: 0;
 }
-/* line 380, ../sass/screen.sass */
+/* line 385, ../sass/screen.sass */
 .offer:hover h3 a, .offer:focus h3 a, .offer:active h3 a {
   color: #4587ca;
 }
 
-/* line 383, ../sass/screen.sass */
+/* line 388, ../sass/screen.sass */
 .sinopsis {
   min-height: 200px;
 }
-/* line 386, ../sass/screen.sass */
+/* line 391, ../sass/screen.sass */
 .sinopsis a {
   display: block;
 }
 
-/* line 389, ../sass/screen.sass */
+/* line 394, ../sass/screen.sass */
 .other {
   bottom: 0;
   height: 70px;
   position: absolute;
 }
-/* line 394, ../sass/screen.sass */
+/* line 399, ../sass/screen.sass */
 .other span {
   color: #64bc45;
   font-size: 10px;
   text-transform: uppercase;
 }
-/* line 400, ../sass/screen.sass */
+/* line 405, ../sass/screen.sass */
 .other a {
   display: block;
 }
 
-/* line 403, ../sass/screen.sass */
+/* line 408, ../sass/screen.sass */
 .offer.result {
   min-height: 1px;
   padding: 20px 30px;
 }
-/* line 408, ../sass/screen.sass */
+/* line 413, ../sass/screen.sass */
 .offer.result .decor {
   background: #dddddc;
   height: 95px;
@@ -533,35 +541,35 @@ footer a:hover {
   top: 0;
   width: 1px;
 }
-/* line 416, ../sass/screen.sass */
+/* line 421, ../sass/screen.sass */
 .offer.result h3 {
   min-height: 1px;
 }
-/* line 419, ../sass/screen.sass */
+/* line 424, ../sass/screen.sass */
 .offer.result .sinopsis {
   max-width: 380px;
   min-height: 140px;
 }
-/* line 424, ../sass/screen.sass */
+/* line 429, ../sass/screen.sass */
 .offer.result .other {
   height: auto;
   position: static;
 }
-/* line 429, ../sass/screen.sass */
+/* line 434, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6 {
   margin: 10px 0 0;
   padding: 0 15px 0 50px;
 }
-/* line 433, ../sass/screen.sass */
+/* line 438, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6.first {
   padding: 0 50px 0 15px;
 }
-/* line 436, ../sass/screen.sass */
+/* line 441, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6.text-right {
   float: right;
 }
 
-/* line 439, ../sass/screen.sass */
+/* line 444, ../sass/screen.sass */
 a.ver_completo {
   background: url(../images/general_sprite.png) left -153px no-repeat;
   color: #316eab;
@@ -570,19 +578,19 @@ a.ver_completo {
   padding: 4px 0 4px 20px;
   text-transform: uppercase;
 }
-/* line 448, ../sass/screen.sass */
+/* line 453, ../sass/screen.sass */
 a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   color: #4587ca;
   text-decoration: none;
 }
 
 /* ****************** MODAL ************** */
-/* line 454, ../sass/screen.sass */
+/* line 459, ../sass/screen.sass */
 .modal-header {
   border: none;
   padding: 20px 20px 15px;
 }
-/* line 458, ../sass/screen.sass */
+/* line 463, ../sass/screen.sass */
 .modal-header h4 {
   color: #316eab;
   font-size: 30px;
@@ -590,20 +598,20 @@ a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   padding: 20px 0 0;
 }
 
-/* line 466, ../sass/screen.sass */
+/* line 471, ../sass/screen.sass */
 .modal-body {
   font-size: 13px;
 }
-/* line 469, ../sass/screen.sass */
+/* line 474, ../sass/screen.sass */
 .modal-body a {
   color: #a6d05d;
 }
-/* line 472, ../sass/screen.sass */
+/* line 477, ../sass/screen.sass */
 .modal-body a:hover {
   color: #90c238;
 }
 
-/* line 475, ../sass/screen.sass */
+/* line 480, ../sass/screen.sass */
 #mint-button {
   background: #a6d05d url(../images/general_sprite.png) left -247px no-repeat;
   -moz-border-radius: 0 0 5px 0;
@@ -615,7 +623,7 @@ a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   margin: 15px 0 5px;
   padding: 10px 15px 10px 40px;
 }
-/* line 485, ../sass/screen.sass */
+/* line 490, ../sass/screen.sass */
 #mint-button:hover {
   background-color: #9bca49;
 }
