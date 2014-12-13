@@ -131,21 +131,12 @@ var SampleApp = function() {
 	self.createRoutes = function() {
 		self.routes = { };
 
-		self.routes['/asciimo'] = function(req, res) {
-			var link = "http://i.imgur.com/kmbjB.png";
-			res.send("<html><body><img src='" + link + "'></body></html>");
-		};
-
 		self.routes['/'] = function(req, res) {
-			Oferta.find(function (err, ofertas) {
-				if (err) return console.error(err);
-				res.render('index', 
-					{ 
-						title: 'Busca ofertas de trabajo en Tijuana | Encuentra nuevo empleo',
-						ofertas: ofertas
-					}
-				);
-			});
+			res.render('index', 
+				{ 
+					title: 'Busca ofertas de trabajo en Tijuana | Encuentra nuevo empleo',
+				}
+			);
 		};
 
 		self.routes['/ofertas/get'] = function(req, res) {
@@ -165,7 +156,7 @@ var SampleApp = function() {
 			};
 			var fields = {};
 			var options = {
-				limit: 102
+				limit: 420
 			};
 			Oferta.find( filter, fields, options, function (err, ofertas) {
 				if (err) return console.error(err);
