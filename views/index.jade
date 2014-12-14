@@ -28,11 +28,10 @@ block header
 							.col-xs-12.col-sm-3
 								button.btn.btn-default(ng-click='search()') Buscar
 
-
 block content
 	#main_content
 		.container
-			h1 Ofertas de Trabajo en Tijuana
+			h1 Ofertas de Trabajo en Tijuana: {{ofertas.length}}
 			#content_ofertas(masonry)
 				.masonry-brick.offer(ng-repeat="oferta in ofertas", my-repeat-directive)
 					h3
@@ -40,12 +39,11 @@ block content
 							| {{oferta.title}}
 					div
 						| {{oferta.description}}
-					br
 					p.other
-						a(href="oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank', ng-click='sendEvent(2, oferta)')
+						a(href="{{oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank', ng-click='sendEvent(2, oferta)', ng-show="oferta.company")
 							span Sueldo: 
 							| {{oferta.salary}}
-							br
+						a(href="{{oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank', ng-click='sendEvent(2, oferta)', ng-show="oferta.company")
 							span Empresa: 
 							| {{oferta.company}}
 					.date
@@ -54,7 +52,7 @@ block content
 
 	#adsense.container
 		script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
-		ins(class="adsbygoogle", style="display:inline-block;width:970px;height:250px", data-ad-client="ca-pub-0681317538593264", data-ad-slot="9221037426")
+		ins(class="adsbygoogle", style="display:inline-block;width:970px;height:90px", data-ad-client="ca-pub-0681317538593264", data-ad-slot="6018185820")
 		script.
 			(adsbygoogle = window.adsbygoogle || []).push({});
 
@@ -73,11 +71,11 @@ block about-us
 					p
 						| En Busca Trabajo solo podrás ver hasta 420 resultados. Para una búsqueda más profunda consulta las fuentes originales.
 					p
-						| Busca Trabajo es un proyecto desarrollado por <a href="http://mintitmedia.com" title="Desarrollo y Diseño Web" target="_blank" ng-click='sendEvent(3)'>Mint IT Media</a>; grupo de trabajo enfocado en el desarrollo y diseño de soluciones Web.
+						| Busca Trabajo es un proyecto desarrollado por <a href="http://mintitmedia.com" title="Desarrollo y Diseño de Sitios Web" target="_blank" ng-click='sendEvent(3)'>Mint IT Media</a>; grupo de trabajo enfocado en el desarrollo y diseño de soluciones Web.
 					p
 						| Para cualquier comentario, sugerencia o duda nos puedes escribir a <a href="mailto:info@mintitmedia.com" title="contacto" ng-click='sendEvent(4)'>info@mintitmedia.com</a>.
 
 block footer
 	footer
-		p © 2010-2014 Tekipan. Powered by <a href="http://mintitmedia.com" title="Desarrollo y Diseño Web" target="_blank" ng-click='sendEvent(31)'>Mint</a>
+		p © 2010-2014 MisOfertasDeTrabajo. Powered by <a href="http://mintitmedia.com" title="Desarrollo y Diseño de Sitios Web" target="_blank" ng-click='sendEvent(31)'>Mint</a>
 
