@@ -166,7 +166,7 @@ var SampleApp = function() {
 				else{
 					res.json({ 'status': 0 })
 				}
-			});
+			}).sort({timestamp:-1});
 		};
 
 		self.routes['/bot/occ'] = function(req, res){

@@ -242,24 +242,31 @@ function Scrapper(Oferta) {
 		var response = '';
 		if(format == 'occ'){
 			var bits = data.split(' ');
-			response =  new Date().getFullYear() + '-' + getMonthFromString(bits[0]) + '-' + bits[1];
+			response =  new Date().getFullYear() + '-' + getMonthFromString(bits[0]) + '-' + addZeroToDigit(bits[1]);
 		}
 		if(format == 'empleonuevo'){
 			var bits = data.split(' ');
-			response =  new Date().getFullYear() + '-' + getMonthFromString(bits[1]) + '-' + bits[0];
+			response =  new Date().getFullYear() + '-' + getMonthFromString(bits[1]) + '-' + addZeroToDigit(bits[0]);
 		}
 		else if(format == 'empleogob'){
 			var bits = data.split('de');
 			response =  bits[2] + '-' + getMonthFromString(bits[1]) + '-' + bits[0];
 		}
-		return response;
+		return response.trim();
+	}
+
+	function addZeroToDigit(data){
+		if (data.length != 2 && data.length == 1) {
+            data = '0' + data;
+        }
+        return data;
 	}
 
 	function getMonthFromString(data){
 		var months_full = ['', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 		var months_short = ['', 'ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 		var response = (data.length > 3) ? months_full.indexOf(data.trim().toLowerCase()) : months_short.indexOf(data.trim().toLowerCase());
-		return response;
+		return addZeroToDigit(response);
 	}
 
     function setEmpleoNuevoCompletOferta(lista_ofertas, index, callback){
