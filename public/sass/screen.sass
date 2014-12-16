@@ -267,7 +267,22 @@ header.condensed
 		&:hover, &:focus, &:active
 			background: darken(#a6d05d, 10)
 			text-decoration: none
-		
+.input-group
+	display: inline-block
+	vertical-align: top
+	.form-control
+		float: none
+.input-group-btn
+	display: inline-block
+	vertical-align: top
+	width: 72px
+
+#searchFormCond
+	button
+		height: 34px
+header.condensed
+	#positioncond
+		width: 250px
 /* --------------- Adsense --------------- */
 
 #adsense
@@ -298,6 +313,7 @@ footer
 #content_ofertas
 	display: none
 	margin: 0 -10px
+	width: 100%
 
 /* --------------- Job offer --------------- */
 .offer
@@ -306,6 +322,7 @@ footer
 	padding: 18px 15px 10px
 	margin: 10px
 	max-width: 100%
+	word-wrap: break-word
 	width: 300px
 	position: relative
 	
@@ -462,16 +479,20 @@ a.ver_completo
 	
 		
 /* ****************** MODAL ************** */
+.modal-dialog
+	margin: 10px auto
+	max-width: 430px
+	width: 80%
 .modal-header
 	border: none
-	padding: 20px 20px 15px
+	padding: 20px 20px 0
 	
 	h4		
 		color: #316eab
 		@extend %arsenal_bold
 		font-size: 30px
 		line-height: 1em
-		padding: 20px 0 0
+		padding: 0
 
 	
 .modal-body
