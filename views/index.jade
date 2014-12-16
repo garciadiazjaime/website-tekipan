@@ -5,9 +5,9 @@ block header
 		.container
 			.row
 				.col-xs-12.col-sm-6
-					#busca-trabajo_brand
-						img(src='/images/busca_trabajo.png', alt='Busca Trabajo')
-						h1 Busca Trabajo
+					h1#busca-trabajo_brand busca
+						span Trabajo
+					
 					form#searchFormCond(name='searchFormCond', role='form')
 						span#msg.text-danger(ng-if="query")
 						input#positioncond(type='text', name='positioncond', placeholder='Puesto, Ej. Desarrollador', ng-model="query")

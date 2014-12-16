@@ -1,5 +1,65 @@
+/* **************** HEADER ****************** */
+@media screen and (max-width: 1023px) {
+  /* line 4, ../sass/responsive.sass */
+  header.condensed #searchFormCond {
+    margin: 0 0 0 20%;
+    width: 80%;
+  }
+}
+@media screen and (max-width: 494px) {
+  /* line 9, ../sass/responsive.sass */
+  #busca-trabajo_brand {
+    font-size: 20px;
+    padding: 5px 0 0;
+    width: 143px;
+  }
+  /* line 13, ../sass/responsive.sass */
+  #busca-trabajo_brand span {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 366px) {
+  /* line 18, ../sass/responsive.sass */
+  header.condensed #searchFormCond {
+    margin: 0 0 0 40%;
+    width: 60%;
+  }
+  /* line 22, ../sass/responsive.sass */
+  header.condensed #searchFormCond button {
+    width: 44%;
+  }
+  /* line 25, ../sass/responsive.sass */
+  header.condensed #positioncond {
+    width: 36%;
+  }
+
+  /* line 28, ../sass/responsive.sass */
+  #busca-trabajo_brand {
+    font-size: 20px;
+  }
+  /* line 30, ../sass/responsive.sass */
+  #busca-trabajo_brand span {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 327px) {
+  /* line 35, ../sass/responsive.sass */
+  header.condensed #searchFormCond {
+    margin: 0 0 0 37%;
+    width: 63%;
+  }
+
+  /* line 38, ../sass/responsive.sass */
+  #busca-trabajo_brand {
+    font-size: 15px;
+  }
+  /* line 40, ../sass/responsive.sass */
+  #busca-trabajo_brand span {
+    font-size: 17px;
+  }
+}
 @media screen and (max-width: 520px) {
-  /* line 2, ../sass/responsive.sass */
+  /* line 47, ../sass/responsive.sass */
   .modal-body {
     background: transparent;
     min-height: 1px;
@@ -7,54 +67,45 @@
   }
 }
 @media screen and (max-width: 767px) {
-  /* line 10, ../sass/responsive.sass */
-  body.home #main_content {
-    top: 410px;
-  }
-
-  /* line 14, ../sass/responsive.sass */
+  /* line 55, ../sass/responsive.sass */
   header .btn {
     margin: 15px 0 0;
   }
 
-  /* line 17, ../sass/responsive.sass */
+  /* line 58, ../sass/responsive.sass */
   #who-tab {
     top: -130px;
   }
 }
 @media screen and (max-width: 1023px) {
-  /* line 22, ../sass/responsive.sass */
+  /* line 63, ../sass/responsive.sass */
   header.condensed #wrap_citycond {
     width: 35%;
   }
-  /* line 25, ../sass/responsive.sass */
+  /* line 66, ../sass/responsive.sass */
   header.condensed #wrap_citycond select {
     width: 125%;
   }
-  /* line 29, ../sass/responsive.sass */
-  header.condensed #searchFormCond button {
-    width: 19%;
-  }
-  /* line 32, ../sass/responsive.sass */
+  /* line 69, ../sass/responsive.sass */
   header.condensed .social {
     margin: -31px 0 -7px auto;
   }
-  /* line 36, ../sass/responsive.sass */
+  /* line 73, ../sass/responsive.sass */
   header.condensed .btn {
     margin: 0;
   }
 }
 @media screen and (max-width: 767px) {
-  /* line 42, ../sass/responsive.sass */
+  /* line 79, ../sass/responsive.sass */
   .offer.result .col-xs-12.col-sm-6 {
     padding: 0 15px;
   }
-  /* line 45, ../sass/responsive.sass */
+  /* line 82, ../sass/responsive.sass */
   .offer.result .sinopsis {
     min-height: 1px;
     max-width: 100%;
   }
-  /* line 49, ../sass/responsive.sass */
+  /* line 86, ../sass/responsive.sass */
   .offer.result .decor {
     display: none;
   }

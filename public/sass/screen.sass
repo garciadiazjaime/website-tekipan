@@ -32,10 +32,7 @@ body.home
 	background: #FEFEFE
 	min-height: 660px
 	padding: 0 5px
-
-h1
-	font-size: 20px
-
+	
 h2, h3, h4, h5, h6	
 	@extend %arsenal
 	font-size: 18px
@@ -113,7 +110,6 @@ header
 		background: rgba(0,0,0,.3)
 		@include border-radius(4px)
 		margin: 0
-		padding: 17px 15px
 	
 	label
 		color: #fcef5a
@@ -133,6 +129,8 @@ header
 		&:hover
 			background: lighten(#316eab, 10)
 			color: #e5e5e4
+	.container
+		position: relative
 
 #wrap_city
 	background: #fff url(../images/general_sprite.png) right -334px no-repeat
@@ -170,24 +168,16 @@ header.condensed
 	
 	#who-tab
 		top: auto
-		bottom: -7px
-
-	#busca-trabajo_brand, #searchFormCond
-		display: inline-block
-		position: relative
-		
-	#busca-trabajo_brand
-		width: 20% 
+		bottom: -7px	
 		
 	#searchFormCond
 		padding-bottom: 0
 		padding-top: 0
 		text-align: right
-		width: 79%
+		width: 100%
 	
 		button
 			vertical-align: top
-			width: 10%
 		
 	#positioncond
 		width: 50%
@@ -230,15 +220,28 @@ header.condensed
 		
 #searchFormCond
 	background: transparent
-	display: none
-	padding: 17px 40px 17px 15px
 	
 #busca-trabajo_brand
-	img
-		max-width: 100%
-	
-	h1
-		display: none
+	color: #e9e9e9
+	display: inline-block
+	@extend %vera
+	font-size: 30px
+	height: 35px
+	left: 14px
+	letter-spacing: -0.03em
+	line-height: 1em
+	margin: 0
+	overflow: hidden
+	top: 0
+	position: absolute
+	width: 250px
+	span
+		color: #316fac
+		display: inline-block
+		@extend %arimo_bold
+		font-size: 32px
+		letter-spacing: 0
+		line-height: 1em
 	
 #who-tab
 	@include border-radius(0 0 5px 5px)
