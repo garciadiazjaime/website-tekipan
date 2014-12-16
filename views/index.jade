@@ -54,11 +54,7 @@ block content
 						span
 							| {{oferta.timestamp| date: 'MMM d'}}
 
-	#adsense.container
-		script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
-		ins(class="adsbygoogle", style="display:inline-block;width:970px;height:90px", data-ad-client="ca-pub-0681317538593264", data-ad-slot="6018185820")
-		script.
-			(adsbygoogle = window.adsbygoogle || []).push({});
+	
 
 block about-us
 	#about-us.modal.face
@@ -80,6 +76,14 @@ block about-us
 						| Para cualquier comentario, sugerencia o duda nos puedes escribir a <a href="mailto:info@mintitmedia.com" title="contacto" ng-click='sendEvent(4)'>info@mintitmedia.com</a>.
 
 block footer
-	footer
-		p © 2010-2014 MisOfertasDeTrabajo. Powered by <a href="http://mintitmedia.com" title="Desarrollo y Diseño de Sitios Web" target="_blank" ng-click='sendEvent(31)'>Mint</a>
+	#sponsored_content
+		#adsense
+			.container
+				script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+				ins(class="adsbygoogle", style="display:inline-block;width:970px;height:90px", data-ad-client="ca-pub-0681317538593264", data-ad-slot="6018185820")
+				script.
+					(adsbygoogle = window.adsbygoogle || []).push({});
+	
+		footer
+			p © 2010-2014 MisOfertasDeTrabajo. Powered by <a href="http://mintitmedia.com" title="Desarrollo y Diseño de Sitios Web" target="_blank" ng-click='sendEvent(31)'>Mint</a>
 
