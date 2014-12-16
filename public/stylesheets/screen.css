@@ -115,19 +115,26 @@ h2, h3, h4, h5, h6 {
 
 /* line 44, ../sass/screen.sass */
 h2 {
-  font-size: 30px;
+  font-size: 16px;
   font-weight: normal;
   color: #2e2e2f;
   margin-bottom: 7px;
-  text-transform: none;
+  text-transform: uppercase;
+}
+/* line 51, ../sass/screen.sass */
+h2 span {
+  color: #316fac;
+  display: inline-block;
+  font-size: 18px;
+  vertical-align: top;
 }
 
-/* line 54, ../sass/screen.sass */
+/* line 57, ../sass/screen.sass */
 a:hover {
   text-decoration: none;
 }
 
-/* line 58, ../sass/screen.sass */
+/* line 61, ../sass/screen.sass */
 input {
   background: #ffffff;
   border: none;
@@ -140,20 +147,20 @@ input {
   width: 100%;
 }
 
-/* line 67, ../sass/screen.sass */
+/* line 70, ../sass/screen.sass */
 .social {
   padding: 0;
   margin: 15px 0 0;
   text-align: right;
 }
-/* line 72, ../sass/screen.sass */
+/* line 75, ../sass/screen.sass */
 .social li {
   display: inline-block;
   height: 22px;
   margin: 0 0 0 20px;
   width: 22px;
 }
-/* line 78, ../sass/screen.sass */
+/* line 81, ../sass/screen.sass */
 .social a {
   background: url(../images/general_sprite.png) 0 0 no-repeat;
   display: block;
@@ -161,20 +168,20 @@ input {
   line-height: 5000em;
   overflow: hidden;
 }
-/* line 85, ../sass/screen.sass */
+/* line 88, ../sass/screen.sass */
 .social a:hover, .social a:focus, .social a:active {
   background-position: 0 -48px;
 }
-/* line 90, ../sass/screen.sass */
+/* line 93, ../sass/screen.sass */
 .social .twitter a {
   background-position: -32px 0;
 }
-/* line 93, ../sass/screen.sass */
+/* line 96, ../sass/screen.sass */
 .social .twitter a:hover, .social .twitter a:focus, .social .twitter a:active {
   background-position: -32px -48px;
 }
 
-/* line 96, ../sass/screen.sass */
+/* line 99, ../sass/screen.sass */
 #msg {
   position: absolute;
   right: 130px;
@@ -183,13 +190,13 @@ input {
 }
 
 /* --------------- Header--------------- */
-/* line 104, ../sass/screen.sass */
+/* line 107, ../sass/screen.sass */
 header {
   background: url(../images/banner.jpg) center top no-repeat;
   background-size: cover;
   padding: 35px 0 40px;
 }
-/* line 109, ../sass/screen.sass */
+/* line 112, ../sass/screen.sass */
 header form {
   background: rgba(0, 0, 0, 0.3);
   -moz-border-radius: 4px;
@@ -197,14 +204,14 @@ header form {
   border-radius: 4px;
   margin: 0;
 }
-/* line 114, ../sass/screen.sass */
+/* line 117, ../sass/screen.sass */
 header label {
   color: #fcef5a;
   font-size: 14px;
   letter-spacing: 0.03em;
   margin: 0 0 10px;
 }
-/* line 121, ../sass/screen.sass */
+/* line 124, ../sass/screen.sass */
 header .btn {
   background: #316eab;
   border: none;
@@ -212,17 +219,17 @@ header .btn {
   font-size: 14px;
   text-transform: uppercase;
 }
-/* line 129, ../sass/screen.sass */
+/* line 132, ../sass/screen.sass */
 header .btn:hover {
   background: #4587ca;
   color: #e5e5e4;
 }
-/* line 132, ../sass/screen.sass */
+/* line 135, ../sass/screen.sass */
 header .container {
   position: relative;
 }
 
-/* line 135, ../sass/screen.sass */
+/* line 138, ../sass/screen.sass */
 #wrap_city {
   background: #fff url(../images/general_sprite.png) right -334px no-repeat;
   -moz-border-radius: 5px;
@@ -235,11 +242,11 @@ header .container {
   vertical-align: top;
   width: 100%;
 }
-/* line 145, ../sass/screen.sass */
+/* line 148, ../sass/screen.sass */
 #wrap_city:hover {
   background-position: right -382px;
 }
-/* line 148, ../sass/screen.sass */
+/* line 151, ../sass/screen.sass */
 #wrap_city select {
   background: transparent;
   border: none;
@@ -250,7 +257,7 @@ header .container {
   -webkit-appearance: none;
 }
 
-/* line 158, ../sass/screen.sass */
+/* line 161, ../sass/screen.sass */
 header.condensed {
   background: #343434;
   padding: 5px 0;
@@ -259,31 +266,31 @@ header.condensed {
   width: 100%;
   z-index: 100;
 }
-/* line 166, ../sass/screen.sass */
+/* line 169, ../sass/screen.sass */
 header.condensed input {
   margin: 0;
 }
-/* line 169, ../sass/screen.sass */
+/* line 172, ../sass/screen.sass */
 header.condensed #who-tab {
   top: auto;
   bottom: -7px;
 }
-/* line 173, ../sass/screen.sass */
+/* line 176, ../sass/screen.sass */
 header.condensed #searchFormCond {
   padding-bottom: 0;
   padding-top: 0;
   text-align: right;
   width: 100%;
 }
-/* line 179, ../sass/screen.sass */
+/* line 182, ../sass/screen.sass */
 header.condensed #searchFormCond button {
   vertical-align: top;
 }
-/* line 182, ../sass/screen.sass */
+/* line 185, ../sass/screen.sass */
 header.condensed #positioncond {
   width: 50%;
 }
-/* line 185, ../sass/screen.sass */
+/* line 188, ../sass/screen.sass */
 header.condensed #wrap_citycond {
   background: url(../images/general_sprite.png) right -334px no-repeat;
   -moz-border-radius: 5px;
@@ -296,11 +303,11 @@ header.condensed #wrap_citycond {
   vertical-align: top;
   width: 20%;
 }
-/* line 195, ../sass/screen.sass */
+/* line 198, ../sass/screen.sass */
 header.condensed #wrap_citycond:hover {
   background-position: right -382px;
 }
-/* line 198, ../sass/screen.sass */
+/* line 201, ../sass/screen.sass */
 header.condensed #wrap_citycond select {
   background: transparent;
   border: none;
@@ -310,30 +317,30 @@ header.condensed #wrap_citycond select {
   width: 115%;
   -webkit-appearance: none;
 }
-/* line 208, ../sass/screen.sass */
+/* line 211, ../sass/screen.sass */
 header.condensed .col-xs-12.col-sm-6 {
   width: 100%;
 }
-/* line 211, ../sass/screen.sass */
+/* line 214, ../sass/screen.sass */
 header.condensed .col-xs-12.col-sm-6.text-right {
   height: 1px;
 }
-/* line 214, ../sass/screen.sass */
+/* line 217, ../sass/screen.sass */
 header.condensed #searchForm {
   display: none;
 }
-/* line 217, ../sass/screen.sass */
+/* line 220, ../sass/screen.sass */
 header.condensed .social {
   margin: -38px 0 0 auto;
   width: 60px;
 }
 
-/* line 221, ../sass/screen.sass */
+/* line 224, ../sass/screen.sass */
 #searchFormCond {
   background: transparent;
 }
 
-/* line 224, ../sass/screen.sass */
+/* line 227, ../sass/screen.sass */
 #busca-trabajo_brand {
   color: #e9e9e9;
   display: inline-block;
@@ -348,7 +355,7 @@ header.condensed .social {
   position: absolute;
   width: 250px;
 }
-/* line 238, ../sass/screen.sass */
+/* line 241, ../sass/screen.sass */
 #busca-trabajo_brand span {
   color: #316fac;
   display: inline-block;
@@ -357,7 +364,7 @@ header.condensed .social {
   line-height: 1em;
 }
 
-/* line 246, ../sass/screen.sass */
+/* line 249, ../sass/screen.sass */
 #who-tab {
   -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0;
@@ -370,7 +377,7 @@ header.condensed .social {
   top: -75px;
   width: 140px;
 }
-/* line 257, ../sass/screen.sass */
+/* line 260, ../sass/screen.sass */
 #who-tab a {
   background: #a6d05d;
   color: #ffffff;
@@ -378,14 +385,14 @@ header.condensed .social {
   height: 100%;
   padding: 8px 16px;
 }
-/* line 264, ../sass/screen.sass */
+/* line 267, ../sass/screen.sass */
 #who-tab a:hover, #who-tab a:focus, #who-tab a:active {
   background: #90c238;
   text-decoration: none;
 }
 
 /* --------------- Adsense --------------- */
-/* line 270, ../sass/screen.sass */
+/* line 273, ../sass/screen.sass */
 #adsense {
   padding-top: 60px;
   text-align: center;
@@ -393,7 +400,7 @@ header.condensed .social {
 }
 
 /* --------------- Footer --------------- */
-/* line 277, ../sass/screen.sass */
+/* line 280, ../sass/screen.sass */
 footer {
   background: #316eab;
   color: #f9fcfa;
@@ -402,26 +409,26 @@ footer {
   padding: 25px 10px;
   text-align: center;
 }
-/* line 285, ../sass/screen.sass */
+/* line 288, ../sass/screen.sass */
 footer p {
   margin: 0;
 }
-/* line 288, ../sass/screen.sass */
+/* line 291, ../sass/screen.sass */
 footer a {
   color: #61bb46;
 }
-/* line 291, ../sass/screen.sass */
+/* line 294, ../sass/screen.sass */
 footer a:hover {
   color: #81c96b;
 }
 
-/* line 295, ../sass/screen.sass */
+/* line 298, ../sass/screen.sass */
 #content_ofertas {
   display: none;
 }
 
 /* --------------- Job offer --------------- */
-/* line 299, ../sass/screen.sass */
+/* line 302, ../sass/screen.sass */
 .offer {
   background: #f3f4f4;
   border: 1px solid #d1d1d1;
@@ -430,7 +437,7 @@ footer a:hover {
   width: 300px;
   position: relative;
 }
-/* line 307, ../sass/screen.sass */
+/* line 310, ../sass/screen.sass */
 .offer .social {
   margin: 0 0 11px;
   position: absolute;
@@ -439,53 +446,53 @@ footer a:hover {
   top: 43px;
   z-index: 5;
 }
-/* line 315, ../sass/screen.sass */
+/* line 318, ../sass/screen.sass */
 .offer .social li {
   height: 20px;
   margin: 0 10px 0 0;
   width: 21px;
 }
-/* line 320, ../sass/screen.sass */
+/* line 323, ../sass/screen.sass */
 .offer .social li a {
   background-position: -75px -1px;
 }
-/* line 323, ../sass/screen.sass */
+/* line 326, ../sass/screen.sass */
 .offer .social li a:hover {
   background-position: -75px -49px;
 }
-/* line 327, ../sass/screen.sass */
+/* line 330, ../sass/screen.sass */
 .offer .social .twitter a {
   background-position: -116px -1px;
 }
-/* line 330, ../sass/screen.sass */
+/* line 333, ../sass/screen.sass */
 .offer .social .twitter a:hover {
   background-position: -116px -49px;
 }
-/* line 333, ../sass/screen.sass */
+/* line 336, ../sass/screen.sass */
 .offer a {
   color: #373837;
 }
-/* line 336, ../sass/screen.sass */
+/* line 339, ../sass/screen.sass */
 .offer a:hover {
   color: #505250;
 }
-/* line 339, ../sass/screen.sass */
+/* line 342, ../sass/screen.sass */
 .offer h3 {
   line-height: 1.2em;
   margin: -3px 60px 10px 0;
   min-height: 16px;
   padding: 0;
 }
-/* line 345, ../sass/screen.sass */
+/* line 348, ../sass/screen.sass */
 .offer h3 a {
   color: #316eab;
   display: block;
 }
-/* line 349, ../sass/screen.sass */
+/* line 352, ../sass/screen.sass */
 .offer h3 a span {
   font-size: 85%;
 }
-/* line 352, ../sass/screen.sass */
+/* line 355, ../sass/screen.sass */
 .offer h5 {
   bottom: 110px;
   color: #373837;
@@ -494,7 +501,7 @@ footer a:hover {
   position: absolute;
   text-transform: uppercase;
 }
-/* line 361, ../sass/screen.sass */
+/* line 364, ../sass/screen.sass */
 .offer .date {
   display: block;
   padding: 0 0 20px;
@@ -502,7 +509,7 @@ footer a:hover {
   right: 0px;
   top: 12px;
 }
-/* line 368, ../sass/screen.sass */
+/* line 371, ../sass/screen.sass */
 .offer .date span {
   background: #a6d05d;
   -moz-border-radius: 5px 0 0 5px;
@@ -517,47 +524,47 @@ footer a:hover {
   text-align: center;
   text-transform: uppercase;
 }
-/* line 381, ../sass/screen.sass */
+/* line 384, ../sass/screen.sass */
 .offer .date span .small {
   font-size: 13px;
   min-width: 1px;
   padding: 0;
 }
-/* line 388, ../sass/screen.sass */
+/* line 391, ../sass/screen.sass */
 .offer:hover h3 a, .offer:focus h3 a, .offer:active h3 a {
   color: #4587ca;
 }
 
-/* line 391, ../sass/screen.sass */
+/* line 394, ../sass/screen.sass */
 .sinopsis {
   min-height: 200px;
 }
-/* line 394, ../sass/screen.sass */
+/* line 397, ../sass/screen.sass */
 .sinopsis a {
   display: block;
 }
 
-/* line 397, ../sass/screen.sass */
+/* line 400, ../sass/screen.sass */
 .other {
   margin-top: 10px;
 }
-/* line 400, ../sass/screen.sass */
+/* line 403, ../sass/screen.sass */
 .other span {
   color: #64bc45;
   font-size: 10px;
   text-transform: uppercase;
 }
-/* line 406, ../sass/screen.sass */
+/* line 409, ../sass/screen.sass */
 .other a {
   display: block;
 }
 
-/* line 409, ../sass/screen.sass */
+/* line 412, ../sass/screen.sass */
 .offer.result {
   min-height: 1px;
   padding: 20px 30px;
 }
-/* line 414, ../sass/screen.sass */
+/* line 417, ../sass/screen.sass */
 .offer.result .decor {
   background: #dddddc;
   height: 95px;
@@ -566,35 +573,35 @@ footer a:hover {
   top: 0;
   width: 1px;
 }
-/* line 422, ../sass/screen.sass */
+/* line 425, ../sass/screen.sass */
 .offer.result h3 {
   min-height: 1px;
 }
-/* line 425, ../sass/screen.sass */
+/* line 428, ../sass/screen.sass */
 .offer.result .sinopsis {
   max-width: 380px;
   min-height: 140px;
 }
-/* line 430, ../sass/screen.sass */
+/* line 433, ../sass/screen.sass */
 .offer.result .other {
   height: auto;
   position: static;
 }
-/* line 435, ../sass/screen.sass */
+/* line 438, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6 {
   margin: 10px 0 0;
   padding: 0 15px 0 50px;
 }
-/* line 439, ../sass/screen.sass */
+/* line 442, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6.first {
   padding: 0 50px 0 15px;
 }
-/* line 442, ../sass/screen.sass */
+/* line 445, ../sass/screen.sass */
 .offer.result .col-xs-12.col-sm-6.text-right {
   float: right;
 }
 
-/* line 445, ../sass/screen.sass */
+/* line 448, ../sass/screen.sass */
 a.ver_completo {
   background: url(../images/general_sprite.png) left -153px no-repeat;
   color: #316eab;
@@ -603,19 +610,19 @@ a.ver_completo {
   padding: 4px 0 4px 20px;
   text-transform: uppercase;
 }
-/* line 454, ../sass/screen.sass */
+/* line 457, ../sass/screen.sass */
 a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   color: #4587ca;
   text-decoration: none;
 }
 
 /* ****************** MODAL ************** */
-/* line 460, ../sass/screen.sass */
+/* line 463, ../sass/screen.sass */
 .modal-header {
   border: none;
   padding: 20px 20px 15px;
 }
-/* line 464, ../sass/screen.sass */
+/* line 467, ../sass/screen.sass */
 .modal-header h4 {
   color: #316eab;
   font-size: 30px;
@@ -623,20 +630,20 @@ a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   padding: 20px 0 0;
 }
 
-/* line 472, ../sass/screen.sass */
+/* line 475, ../sass/screen.sass */
 .modal-body {
   font-size: 13px;
 }
-/* line 475, ../sass/screen.sass */
+/* line 478, ../sass/screen.sass */
 .modal-body a {
   color: #a6d05d;
 }
-/* line 478, ../sass/screen.sass */
+/* line 481, ../sass/screen.sass */
 .modal-body a:hover {
   color: #90c238;
 }
 
-/* line 481, ../sass/screen.sass */
+/* line 484, ../sass/screen.sass */
 #mint-button {
   background: #a6d05d url(../images/general_sprite.png) left -247px no-repeat;
   -moz-border-radius: 0 0 5px 0;
@@ -648,7 +655,7 @@ a.ver_completo:hover, a.ver_completo:focus, a.ver_completo:active {
   margin: 15px 0 5px;
   padding: 10px 15px 10px 40px;
 }
-/* line 491, ../sass/screen.sass */
+/* line 494, ../sass/screen.sass */
 #mint-button:hover {
   background-color: #9bca49;
 }

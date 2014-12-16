@@ -31,7 +31,8 @@ block header
 block content
 	#main_content
 		.container
-			h1 Ofertas de Trabajo en Tijuana: {{ofertas.length}}
+			h2 Ofertas de Trabajo en Tijuana: 
+				span {{ofertas.length}}
 			#content_ofertas(masonry)
 				.masonry-brick.offer(ng-repeat="oferta in ofertas", my-repeat-directive)
 					h3
