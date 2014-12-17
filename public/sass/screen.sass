@@ -228,23 +228,24 @@ header.condensed
 	color: #e9e9e9
 	display: inline-block
 	@extend %vera
-	font-size: 30px
-	height: 35px
+	font-size: 20px
+	height: 26px
 	left: 14px
-	letter-spacing: -0.03em
+	letter-spacing: -0.05em
 	line-height: 1em
 	margin: 0
 	overflow: hidden
-	top: 0
+	top: 5px
 	position: absolute
 	width: 250px
 	span
 		color: #316fac
 		display: inline-block
 		@extend %arimo_bold
-		font-size: 32px
-		letter-spacing: 0
+		font-size: 22px
+		letter-spacing: -0.07em
 		line-height: 1em
+		margin: 0 0 0 5px
 	
 #who-tab
 	@include border-radius(0 0 5px 5px)
@@ -285,13 +286,14 @@ header.condensed
 		width: 250px
 /* --------------- sponsored content + footer --------------- */
 #sponsored_content
-	bottom: 0
+	background: #fff
+	bottom: 20px
 	display: block
-	height: 80px
+	height: 70px
 	left: 0
 	position: fixed
 	width: 100%
-	z-index: 500
+	z-index: 10
 #adsense
 	border-top: 2px dashed #343434
 	display: block
@@ -309,10 +311,14 @@ footer
 	bottom: 0
 	color: #f9fcfa
 	font: 10px Verdana, sans-serif
-	padding: 5px 10px
-	position: absolute
+	height: 20px
+	left: 0
+	line-height: 1em
+	padding: 4px 10px 0
+	position: fixed
 	text-align: center
 	width: 100%
+	z-index: 10
 	
 	p
 		margin: 0
