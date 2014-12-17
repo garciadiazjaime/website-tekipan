@@ -423,7 +423,7 @@ header.condensed #positioncond {
 #sponsored_content {
   bottom: 0;
   display: block;
-  height: 90px;
+  height: 82px;
   left: 0;
   position: fixed;
   width: 100%;
@@ -436,7 +436,7 @@ header.condensed #positioncond {
   display: block;
   text-align: center;
   margin: 0 auto;
-  padding: 5px 0 0;
+  padding: 2px 0 0;
   position: relative;
   width: 100%;
 }

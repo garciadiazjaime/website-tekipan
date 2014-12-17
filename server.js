@@ -158,7 +158,7 @@ var SampleApp = function() {
 			var options = {
 				limit: 420
 			};
-			Oferta.find( filter, fields, options, function (err, ofertas) {
+			Oferta.find( filter, fields, options).sort({timestamp:-1}).exec(function (err, ofertas) {
 				if (err) return console.error(err);
 				if(typeof ofertas && ofertas.length){
 					res.json({ 'status': 1, 'data': ofertas })    
@@ -166,7 +166,7 @@ var SampleApp = function() {
 				else{
 					res.json({ 'status': 0 })
 				}
-			}).sort({timestamp:-1});
+			});
 		};
 
 		self.routes['/bot/occ'] = function(req, res){
