@@ -140,12 +140,15 @@ var SampleApp = function() {
 		};
 
 		self.routes['/ofertas/get'] = function(req, res) {
-			console.log('ofertas/get');
-			query = typeof req.param('query') != 'undefined' && req.param('query') != '' ? req.param('query') : '';
+			var query = typeof req.param('query') != 'undefined' && req.param('query') != '' ? req.param('query') : '';
+			var page = typeof req.param('page') != 'undefined' && req.param('page') != '' ? req.param('page') : '';
 			var regex_title = new RegExp(query, 'gi');
 			var regex_description = new RegExp(query, 'gi');
 			var regex_salary = new RegExp(query, 'gi');
 			var regex_company = new RegExp(query, 'gi');
+
+			console.log('ofertas/get ' + query + ' ' + page);
+
 			var filter = {
 				$or: [
 					{ title: regex_title },
@@ -156,7 +159,8 @@ var SampleApp = function() {
 			};
 			var fields = {};
 			var options = {
-				limit: 420
+				limit: 30,
+				skip: (page - 1) * 30
 			};
 			Oferta.find( filter, fields, options).sort({timestamp:-1}).exec(function (err, ofertas) {
 				if (err) return console.error(err);

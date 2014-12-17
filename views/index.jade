@@ -5,12 +5,12 @@ block header
 		.container
 			.row
 				.col-xs-12.col-sm-6
-					h1#busca-trabajo_brand busca
+					h1#busca-trabajo_brand ofertas
 						span Trabajo
 					
-					#searchFormCond(name='searchFormCond', role='form')
+					form#searchFormCond(name='searchFormCond', role='form')
 						.input-group
-							input.form-control#positioncond(type='text', name='positioncond', placeholder='Puesto, Ej. Desarrollador')
+							input.form-control#positioncond(type='text', name='positioncond', placeholder='Puesto, Ej. Desarrollador', ng-model="query")
 							span.input-group-btn
 								button.btn.btn-default(ng-click='search()') Buscar 
 						span#msg.text-danger(ng-if="query")
@@ -34,8 +34,8 @@ block header
 block content
 	#main_content
 		.container
-			h2 Ofertas de Trabajo en Tijuana: 
-				span {{ofertas.length}}
+			h2 Ofertas de Trabajo en Tijuana:
+				span &nbsp;{{query}}
 			#content_ofertas(masonry)
 				.masonry-brick.offer(ng-repeat="oferta in ofertas", my-repeat-directive)
 					h3
@@ -67,11 +67,11 @@ block about-us
 						| ¿Quiénes somos?
 				.modal-body
 					p
-						| <b>Busca Trabajo &copy;</b> presenta de manera sencilla y agradable ofertas de trabajo extraidas de otros sitios. Dejando el link a la fuente original, siendo simplemente un facilitador de la información.
+						| <b>MisOfertasdeTrabajo &copy;</b> presenta de manera sencilla y fácil ofertas de trabajo de Tijuana extraidas de otros sitios. Dejando el link a la fuente original, siendo simplemente un facilitador de la información.
 					p
-						| En Busca Trabajo solo podrás ver hasta 420 resultados. Para una búsqueda más profunda consulta las fuentes originales.
+						| En MisOfertasdeTrabajo podrás ver ofertas de trabajo solo de los últimos 30 días. Para una búsqueda más profunda consulta las fuentes originales.
 					p
-						| Busca Trabajo es un proyecto desarrollado por <a href="http://mintitmedia.com" title="Desarrollo y Diseño de Sitios Web" target="_blank" ng-click='sendEvent(3)'>Mint IT Media</a>; grupo de trabajo enfocado en el desarrollo y diseño de soluciones Web.
+						| MisOfertasdeTrabajo es un proyecto desarrollado por <a href="http://mintitmedia.com" title="Desarrollo y Diseño de Sitios Web" target="_blank" ng-click='sendEvent(3)'>Mint IT Media</a>; grupo de trabajo enfocado en el desarrollo y diseño de soluciones Web.
 					p
 						| Para cualquier comentario, sugerencia o duda nos puedes escribir a <a href="mailto:info@mintitmedia.com" title="contacto" ng-click='sendEvent(4)'>info@mintitmedia.com</a>.
 

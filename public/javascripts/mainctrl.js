@@ -1,10 +1,16 @@
 var ofertaApp = angular.module('ofertaApp', ['wu.masonry']);
 var ajaxloader=$('<img class="ajax-loader-tiny" src="/images/ajax-loader.gif" style="height: 17px;" />');
+var is_hidden = true;
 
 ofertaApp.directive('myRepeatDirective', function() {
 	return function(scope, element, attrs) {
 		if (scope.$last){
-			$('#content_ofertas').show();
+			setTimeout(function(){
+				if(is_hidden){
+					$('#content_ofertas').css({'visibility': 'visible'});
+					is_hidden = false;
+				}
+			}, 400);
 		}
 	};
 });
@@ -13,6 +19,9 @@ ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 	$scope.ofertas = [];
 	$scope.query = '';
 	$scope.last_query = '';
+	$scope.page = 1;
+	$scope.is_there_more = true;
+	$scope.is_fire_available = true;
 
 	$scope.serviceSearch = function(){
 		$('#msg').text('');
@@ -22,21 +31,34 @@ ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 			method: "GET",
 			url: "/ofertas/get",
 			params: {
-				query : $scope.query
+				query : $scope.query,
+				page: $scope.page
 			}
 		}).success(function(response){
 			$('#searchFormCond img').remove();
 			if(typeof response.status && response.status){
-				$scope.ofertas = response.data;
+				if($scope.page == 1){
+					$('html, body').scrollTop(0)
+					$scope.ofertas = [];
+				}
+				for(row in response.data){
+					$scope.ofertas.push(response.data[row]);	
+				}
+				$scope.is_there_more = true;
+				$scope.is_fire_available = true;
 			}
 			else{
-				$('#msg').text('Sin resultados');
+				$scope.is_there_more = false;
+				if($scope.page == 1){
+					$('#msg').text('Sin resultados');	
+				}
 			}
 		});
 	}
 
 	$scope.search = function(){
 		if($scope.last_query != $scope.query){
+			$scope.page = 1;
 			$scope.serviceSearch();
 			ga('send', 'event', 'input', 'query', $scope.query);
 		}
@@ -73,6 +95,14 @@ ofertaApp.controller('ofertaCtrl',['$scope', '$http', function($scope, $http){
 		$(window).scroll(function() {
 			if($(window).scrollTop() + $(window).height() == $(document).height()) {
 				$scope.sendEvent(5);
+			}
+			if($(window).scrollTop() + $(window).height() + 300 >= $(document).height()) {
+				if($scope.is_fire_available && $scope.is_there_more){
+					$scope.page++;
+					$scope.is_fire_available = false;
+					$scope.serviceSearch()
+				}
+
 			}
 		});
 	}
