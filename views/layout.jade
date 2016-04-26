@@ -1,0 +1,26 @@
+doctype html
+html(lang="es", ng-app='ofertaApp')
+	head
+		title= title
+		meta(charset="utf-8")
+		meta(name="author", content="http://mintitmedia.com")
+		meta(name="description", content="Busca Trabajo presenta de manera sencilla y agradable ofertas de trabajo de Tijuana extraidas de otros sitios.")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+
+		link(rel='stylesheet', href='/stylesheets/vendor/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/screen.css')
+	body.home(ng-controller="ofertaCtrl")
+		block header
+		block content
+		block about-us
+		block footer
+
+		script(src="/javascripts/vendor/jquery-2.1.1.min.js")
+		script(src="/javascripts/vendor/masonry.pkgd.min.js")
+		script(src="/javascripts/vendor/imagesloaded.js")
+		script(src="/javascripts/vendor/angular.min.js")
+		script(src="/javascripts/vendor/angular-masonry.min.js")
+		script(src="/javascripts/vendor/bootstrap.min.js")
+		script(src="/javascripts/ga.js")
+		script(src="/javascripts/mainctrl.js")
+		

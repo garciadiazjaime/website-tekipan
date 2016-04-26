@@ -1,0 +1,94 @@
+extends layout
+
+block header
+	header.condensed
+		.container
+			.row
+				.col-xs-12.col-sm-6
+					h1#busca-trabajo_brand Mis Ofertas
+						span de Trabajo
+
+					form#searchFormCond(name='searchFormCond', role='form')
+						.input-group
+							input.form-control#positioncond(type='text', name='positioncond', placeholder='Puesto, Ej. Desarrollador', ng-model="query")
+							span.input-group-btn
+								button.btn.btn-default(ng-click='search()') Buscar
+						span#msg.text-danger(ng-if="query")
+
+				.col-xs-12.col-sm-6.text-right
+					span#who-tab
+						a(href='quienes-somos', title='Quiénes somos', data-toggle='modal', data-target='#about-us', ng-click='sendEvent(1)') Quiénes somos
+			.row
+				.col-xs-12.col-sm-9
+					form#searchForm(name='searchForm', role='form')
+						.row
+							.col-xs-12.col-sm-5
+								label ¿Qué puesto buscas?
+							.col-xs-12.col-sm-2
+						.row
+							.col-xs-12.col-sm-5
+								input(type='text', name='position', placeholder='Ej. Desarrollador', ng-model="query")
+							.col-xs-12.col-sm-3
+								button.btn.btn-default(ng-click='search()') Buscar
+
+block content
+	#main_content
+		.container
+			h2 Ofertas de Trabajo en Tijuana:
+				span &nbsp;{{query}}
+			#content_ofertas(masonry)
+				.masonry-brick.offer(ng-repeat="oferta in ofertas", my-repeat-directive)
+					h3
+						a(href="{{oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank', ng-click='sendEvent(2, oferta)')
+							| {{oferta.title}}
+					div
+						| {{oferta.description}}
+					p.other
+						a(href="{{oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank', ng-click='sendEvent(2, oferta)', ng-show="oferta.company")
+							span Sueldo:
+							| {{oferta.salary}}
+						a(href="{{oferta.source}}{{oferta.href}}", title="{{oferta.title}}", target='_blank', ng-click='sendEvent(2, oferta)', ng-show="oferta.company")
+							span Empresa:
+							| {{oferta.company}}
+					.date
+						span
+							| {{oferta.timestamp| date: 'MMM d'}}
+
+
+
+block about-us
+	#about-us.modal.face
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(data-dismiss='modal', aria-hidden='true')
+						| &times;
+					h4.modal-title
+						| ¿Quiénes somos?
+				.modal-body
+					p
+						| <b>MisOfertasdeTrabajo &copy;</b> presenta de manera sencilla y fácil ofertas de trabajo de Tijuana extraidas de otros sitios. Dejando el link a la fuente original, siendo simplemente un facilitador de la información.
+					p
+						| En MisOfertasdeTrabajo podrás ver ofertas de trabajo solo de los últimos 30 días. Para una búsqueda más profunda consulta las fuentes originales.
+					p
+						| MisOfertasdeTrabajo es un proyecto desarrollado por <a href="http://mintitmedia.com" title="Desarrollo y Diseño de Sitios Web" target="_blank" ng-click='sendEvent(3)'>Mint IT Media</a>; grupo de trabajo enfocado en el desarrollo y diseño de soluciones Web.
+					p
+						| Para cualquier comentario, sugerencia o duda nos puedes escribir a <a href="mailto:info@mintitmedia.com" title="contacto" ng-click='sendEvent(4)'>info@mintitmedia.com</a>.
+
+block footer
+	#sponsored_content
+		#adsense
+			.container
+				script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+				ins(class="adsbygoogle", style="display:inline-block;width:468px;height:60px", data-ad-client="ca-pub-0681317538593264", data-ad-slot="7924432624")
+				script.
+					(adsbygoogle = window.adsbygoogle || []).push({});
+
+				script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+				ins(class="adsbygoogle", style="display:inline-block;width:468px;height:60px", data-ad-client="ca-pub-0681317538593264", data-ad-slot="4831365429")
+				script.
+					(adsbygoogle = window.adsbygoogle || []).push({});
+
+	footer
+		p © 2010-2014 MisOfertasDeTrabajo. Powered by <a href="http://mintitmedia.com" title="Desarrollo y Diseño de Sitios Web" target="_blank" ng-click='sendEvent(31)'>Mint</a>
+		p Amigos de <a href="http://www.playami.com/" title="Directorio Playas de Tijuana. Restaurantes, Bares, Escuelas" target="_blank">Directorio Playas de Tijuana</a>

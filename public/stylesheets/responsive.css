@@ -1,0 +1,113 @@
+/* **************** HEADER ****************** */
+@media screen and (max-width: 1023px) {
+  /* line 4, ../sass/responsive.sass */
+  header.condensed #searchFormCond {
+    margin: 0 0 0 20%;
+    width: 80%;
+  }
+}
+@media screen and (max-width: 569px) {
+  /* line 10, ../sass/responsive.sass */
+  header.condensed #positioncond {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 494px) {
+  /* line 15, ../sass/responsive.sass */
+  #busca-trabajo_brand {
+    font-size: 13px;
+    padding: 5px 0 0;
+    width: 143px;
+  }
+  /* line 19, ../sass/responsive.sass */
+  #busca-trabajo_brand span {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 366px) {
+  /* line 24, ../sass/responsive.sass */
+  header.condensed #searchFormCond {
+    margin: 0 0 0 40%;
+    width: 60%;
+  }
+  /* line 27, ../sass/responsive.sass */
+  header.condensed .input-group-btn {
+    width: 72px;
+  }
+  /* line 30, ../sass/responsive.sass */
+  header.condensed button {
+    width: 100%;
+  }
+  /* line 33, ../sass/responsive.sass */
+  header.condensed #positioncond {
+    width: 36%;
+  }
+}
+@media screen and (max-width: 327px) {
+  /* line 37, ../sass/responsive.sass */
+  header.condensed #searchFormCond {
+    margin: 0 0 0 37%;
+    width: 63%;
+  }
+
+  /* line 40, ../sass/responsive.sass */
+  #busca-trabajo_brand {
+    font-size: 12px;
+  }
+  /* line 42, ../sass/responsive.sass */
+  #busca-trabajo_brand span {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 520px) {
+  /* line 49, ../sass/responsive.sass */
+  .modal-body {
+    background: transparent;
+    min-height: 1px;
+    padding: 0 20px 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  /* line 57, ../sass/responsive.sass */
+  header .btn {
+    margin: 15px 0 0;
+  }
+
+  /* line 60, ../sass/responsive.sass */
+  #who-tab {
+    top: -130px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  /* line 65, ../sass/responsive.sass */
+  header.condensed #wrap_citycond {
+    width: 35%;
+  }
+  /* line 68, ../sass/responsive.sass */
+  header.condensed #wrap_citycond select {
+    width: 125%;
+  }
+  /* line 71, ../sass/responsive.sass */
+  header.condensed .social {
+    margin: -31px 0 -7px auto;
+  }
+  /* line 75, ../sass/responsive.sass */
+  header.condensed .btn {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  /* line 81, ../sass/responsive.sass */
+  .offer.result .col-xs-12.col-sm-6 {
+    padding: 0 15px;
+  }
+  /* line 84, ../sass/responsive.sass */
+  .offer.result .sinopsis {
+    min-height: 1px;
+    max-width: 100%;
+  }
+  /* line 88, ../sass/responsive.sass */
+  .offer.result .decor {
+    display: none;
+  }
+}
